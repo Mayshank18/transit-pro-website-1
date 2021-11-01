@@ -10,12 +10,7 @@ import OrganizationPage from "./Components/OrganizationPage";
 import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
-  // const Login = (details) => {
-  //   console.log(details);
-  // };
-  // const Signup = (Signupdetails) => {
-  //   console.log(Signupdetails);
-  // };
+
 
   return (
     <>

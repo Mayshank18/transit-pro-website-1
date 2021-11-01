@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignupPage from "./Components/SignupPage";
 import LoginPage from "./Components/LoginPage";
-import Home from "./Components/Home";
+import HomePage from "./Components/HomePage";
 import { AuthProvider } from "./contexts/Authcontext";
 import OrganizationPage from "./Components/OrganizationPage";
 import PrivateRoute from "./Components/PrivateRoute";
@@ -18,7 +18,7 @@ function App() {
         <AuthProvider>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <HomePage />
             </Route>
             <Route exact path="/login">
               <LoginPage />

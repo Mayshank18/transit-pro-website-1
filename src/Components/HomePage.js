@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "./Header";
 
 export default function HomePage() {
-    return (
-        <div>
-
-        </div>
-    )
+  return (
+    <div>
+      <h1>Transit Pro</h1>
+      <Header />
+      <p>This is homepage</p>
+    </div>
+  );
 }

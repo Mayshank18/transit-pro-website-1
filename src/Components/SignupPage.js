@@ -33,7 +33,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}

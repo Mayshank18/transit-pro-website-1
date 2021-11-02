@@ -11,16 +11,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  //   const submit = (e) => {
-  //     e.preventDefault();
-  //     if (!email || !pwd) {
-  //       alert("Email or Password cannot be blank");
-  //     } else {
-  //       setEmail("");
-  //       setPwd("");
-  //     }
-  //   };
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -36,7 +26,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>LOGIN</h2>
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}

@@ -1,13 +1,12 @@
 import "./App.css";
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignupPage from "./Components/SignupPage";
 import LoginPage from "./Components/LoginPage";
 import HomePage from "./Components/HomePage";
-import { AuthProvider } from "./contexts/Authcontext";
+import { AuthProvider } from "./Contexts/AuthContext";
 import OrganizationPage from "./Components/OrganizationPage";
-import PrivateRoute from "./Components/PrivateRoute";
+//import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
 
@@ -26,9 +25,9 @@ function App() {
             <Route exact path="/signup">
               <SignupPage />
             </Route>
-            <PrivateRoute exact path="/organization">
+            <Route exact path="/organization">
               <OrganizationPage />
-            </PrivateRoute>
+            </Route>
           </Switch>
         </AuthProvider>
       </Router>

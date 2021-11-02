@@ -6,7 +6,7 @@ import LoginPage from "./Components/LoginPage";
 import HomePage from "./Components/HomePage";
 import { AuthProvider } from "./Contexts/AuthContext";
 import OrganizationPage from "./Components/OrganizationPage";
-//import PrivateRoute from "./Components/PrivateRoute";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
 
@@ -25,9 +25,10 @@ function App() {
             <Route exact path="/signup">
               <SignupPage />
             </Route>
-            <Route exact path="/organization">
+            <PrivateRoute exact path="/organization" component={OrganizationPage}/>
+            {/* <Route exact path="/organization">
               <OrganizationPage />
-            </Route>
+            </Route> */}
           </Switch>
         </AuthProvider>
       </Router>

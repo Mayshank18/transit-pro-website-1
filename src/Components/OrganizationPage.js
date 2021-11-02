@@ -1,22 +1,34 @@
-import React, {  useRef } from "react";
-//import { useHistory } from "react-router-dom";
-// import { Alert } from "react-bootstrap";
+import React, { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import { Alert } from "react-bootstrap";
+import { useAuth } from "../Contexts/AuthContext";
 
 export default function OrganizationPage() {
-    const companyRef = useRef();
-    const phonenumberRef = useRef();
-    const whatsappnumberRef=useRef();
-    const addressRef=useRef();
+  const companyRef = useRef();
+  const phonenumberRef = useRef();
+  const whatsappnumberRef = useRef();
+  const addressRef = useRef();
 
-    // const [error, setError] = useState("");
-    // const [loading, setLoading] = useState(false);
-    //const history = useHistory();
+  const [error, setError] = useState("");
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
 
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      history.push("/login");
+    } catch (err) {
+      setError(err.message);
+    }
+  }
   return (
     <div className="container">
       <h2>Organization details</h2>
       <form>
-        {/* {error && <Alert variant="danger">{error}</Alert>} */}
+        {error && <Alert variant="danger">{error}</Alert>}
+        <strong>Logged in as:</strong> {currentUser.email}
         <div className="mb-3">
           <label htmlFor="company" className="form-label">
             Company Name
@@ -69,13 +81,20 @@ export default function OrganizationPage() {
             required
           />
         </div>
-        
         <button
           type="submit"
           className="btn btn-sm btn-success"
-        //   disabled={loading}
+          //   disabled={loading}
         >
           Submit
+        </button>{" "}
+        &nbsp;&nbsp;&nbsp;
+        <button
+          type="submit"
+          className="btn btn-sm btn-success"
+          onClick={handleLogout}
+        >
+          Logout
         </button>
       </form>
     </div>

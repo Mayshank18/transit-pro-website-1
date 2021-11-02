@@ -42,7 +42,7 @@ export default function SignupPage() {
             Contact Number
           </label>
           <input
-            type="contact"
+            type="number"
             placeholder="phone number"
             className="form-control"
             id="contact"

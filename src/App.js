@@ -26,9 +26,6 @@ function App() {
               <SignupPage />
             </Route>
             <PrivateRoute exact path="/organization" component={OrganizationPage}/>
-            {/* <Route exact path="/organization">
-              <OrganizationPage />
-            </Route> */}
           </Switch>
         </AuthProvider>
       </Router>

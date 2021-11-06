@@ -12,7 +12,6 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
-    // return auth.createUserWithEmailAndPassword(email, password);
     return (
       auth.createUserWithEmailAndPassword(email , password)
       .then((userCredential)=>{
@@ -25,7 +24,6 @@ export function AuthProvider({ children }) {
         alert("Verification email has been sent");
       })
       .catch()
-      
     )
   }
 
@@ -50,7 +48,7 @@ export function AuthProvider({ children }) {
     signup,
     logout
   };
-
+  // console.log(currentUser)
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}

@@ -19,17 +19,22 @@ export default function SignupPage() {
     if (newpasswordRef.current.value !== confirmpasswordRef.current.value) {
       return setError("Passwords do not match");
     }
-
+    let cancel = false;
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, confirmpasswordRef.current.value);
+      await signup(emailRef.current.value, confirmpasswordRef.current.value).then(()=>{
+        if (cancel) return;
+      setLoading(false);
+      })
       history.push("/login");
     } catch (err) {
       setError(err.message);
     }
+    cancel=true;
+    return cancel;
 
-    setLoading(false);
+    // setLoading(false);
   }
 
   return (

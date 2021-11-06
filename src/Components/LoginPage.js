@@ -13,16 +13,22 @@ export default function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    let cancel = false;
     try {
+      
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value).then(()=>{
+        if (cancel) return;
+      setLoading(false);
+      })
       history.push("/organization");
     } catch (err) {
       setError(err.message);
     }
-    setLoading(false);
+    cancel=true;
+    return cancel;
+    //setLoading(false);
   }
 
   return (

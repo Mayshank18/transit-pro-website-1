@@ -12,7 +12,21 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    // return auth.createUserWithEmailAndPassword(email, password);
+    return (
+      auth.createUserWithEmailAndPassword(email , password)
+      .then((userCredential)=>{
+          // send verification mail.
+        userCredential.user.sendEmailVerification({
+          url: "http://localhost:3000/login?confirm_email=true",
+        });
+       
+        auth.signOut();
+        alert("Verification email has been sent");
+      })
+      .catch()
+      
+    )
   }
 
   function login(email, password) {

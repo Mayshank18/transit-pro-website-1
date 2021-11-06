@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
         userCredential.user.sendEmailVerification({
           url: "http://localhost:3000/login?confirm_email=true",
         });
-       
+      
         auth.signOut();
         alert("Verification email has been sent");
       })

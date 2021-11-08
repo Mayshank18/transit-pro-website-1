@@ -44,10 +44,10 @@ export default function SignupPage() {
       .then(() => {
         setLoading(false);
         console.log("Your message has been submitted👍");
-        setContact("");
-        setEmail("");
-        setNewpassword("");
-        setConfirmPassword("");
+        // setContact("");
+        // setEmail("");
+        // setNewpassword("");
+        // setConfirmPassword("");
       })
       .catch((error) => {
         alert(error.message);

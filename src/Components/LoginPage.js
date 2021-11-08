@@ -25,10 +25,11 @@ export default function LoginPage() {
       history.push("/organization");
     } catch (err) {
       setError(err.message);
+      setLoading(false);
     }
     cancel=true;
     return cancel;
-    //setLoading(false);
+   
   }
 
   return (

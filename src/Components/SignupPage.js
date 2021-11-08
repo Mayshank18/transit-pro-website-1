@@ -1,13 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import { db } from "../firebase";
 
 export default function SignupPage() {
-  const emailRef = useRef();
-  const contactRef = useRef();
-  const newpasswordRef = useRef();
-  const confirmpasswordRef = useRef();
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [newpassword, setNewpassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,25 +17,49 @@ export default function SignupPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (newpasswordRef.current.value !== confirmpasswordRef.current.value) {
+    if (newpassword !== confirmpassword) {
       return setError("Passwords do not match");
     }
     let cancel = false;
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, confirmpasswordRef.current.value).then(()=>{
+      await signup(email, confirmpassword).then(() => {
         if (cancel) return;
-      setLoading(false);
-      })
+        setLoading(false);
+      });
       history.push("/login");
     } catch (err) {
       setError(err.message);
+      setLoading(false);
     }
-    cancel=true;
-    return cancel;
+    cancel = true;
+    console.log(email, contact);
 
-    // setLoading(false);
+    db.collection("user")
+      .add({
+        Email: email,
+        Contact_number: contact,
+      })
+      .then(() => {
+        setLoading(false);
+        console.log("Your message has been submitted👍");
+        setContact("");
+        setEmail("");
+        setNewpassword("");
+        setConfirmPassword("");
+      })
+      .catch((error) => {
+        alert(error.message);
+        setLoading(false);
+        setContact("");
+        setEmail("");
+        setNewpassword("");
+        setConfirmPassword("");
+      });
+
+
+    return cancel;
   }
 
   return (
@@ -51,7 +76,9 @@ export default function SignupPage() {
             placeholder="phone number"
             className="form-control"
             id="contact"
-            ref={contactRef}
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            //ref={contactRef}
             required
           />
         </div>
@@ -64,7 +91,9 @@ export default function SignupPage() {
             placeholder="someone@organization.com"
             className="form-control"
             id="email"
-            ref={emailRef}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            //ref={emailRef}
             required
           />
         </div>
@@ -77,7 +106,9 @@ export default function SignupPage() {
             placeholder="password"
             className="form-control"
             id="newpassword"
-            ref={newpasswordRef}
+            //ref={newpasswordRef}
+            value={newpassword}
+            onChange={(e) => setNewpassword(e.target.value)}
             required
           />
         </div>
@@ -90,7 +121,9 @@ export default function SignupPage() {
             placeholder="password"
             className="form-control"
             id="confirmpassword"
-            ref={confirmpasswordRef}
+            //ref={confirmpasswordRef}
+            value={confirmpassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </div>

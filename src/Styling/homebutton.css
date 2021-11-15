@@ -1,0 +1,40 @@
+.login-rectangle {
+  position: absolute;
+  width: 269px;
+  height: 89px;
+  left: 228px;
+  top: 632px;
+}
+.signup-rectangle
+{
+  position: absolute;
+width: 269px;
+height: 89px;
+left: 558px;
+top: 632px;
+}
+
+.login-font
+{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 42px;
+text-align: center;
+
+color: #000000;
+}
+.signup-font
+{
+
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 42px;
+text-align: center;
+
+color: #000000;
+}

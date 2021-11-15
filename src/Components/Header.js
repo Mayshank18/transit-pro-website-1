@@ -1,12 +1,10 @@
-import { withRouter } from "react-router";
-
-const Header = withRouter(({ history }) => {
-  return (
-    <div>
-      <button onClick={() => history.push("/login")}>Login</button>
-      <button onClick={() => history.push("/signup")}>Signup</button>
-    </div>
-  );
-});
-
-export default Header;
+import React from 'react'
+import "../Styling/header.css"
+import logo from '../Photos/homepage.png'
+export default function Header() {
+    return (
+        <div className="topnav"> 
+        <img src={logo} className="logo"/>          
+        </div>
+    )
+}

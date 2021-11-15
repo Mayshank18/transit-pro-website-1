@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 export default function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -71,6 +71,12 @@ export default function LoginPage() {
           Login
         </button>
       </form>
+      <div>
+        <Link to="/forgot-password">Forgot Password</Link>
+      </div>
+      <div>
+        <Link to="/signup">Need an account</Link>
+      </div>
     </div>
   );
 }

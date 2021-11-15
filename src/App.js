@@ -7,7 +7,7 @@ import HomePage from "./Components/HomePage";
 import { AuthProvider } from "./Contexts/AuthContext";
 import OrganizationPage from "./Components/OrganizationPage";
 import PrivateRoute from "./Components/PrivateRoute";
-
+import ForgotPassword from "./Components/ForgotPassword";
 function App() {
 
 
@@ -26,6 +26,7 @@ function App() {
               <SignupPage />
             </Route>
             <PrivateRoute exact path="/organization" component={OrganizationPage}/>
+            <Route path="/forgot-password" component={ForgotPassword} />
           </Switch>
         </AuthProvider>
       </Router>

@@ -70,10 +70,10 @@ export default function LoginPage() {
     }//try
     
       // setLoading(false);
-    }
     cancel = true;
     return cancel;
   }
+  
 
   return (
     <div>

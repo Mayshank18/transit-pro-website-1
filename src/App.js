@@ -6,6 +6,7 @@ import LoginPage from "./Components/LoginPage";
 import HomePage from "./Components/HomePage";
 import { AuthProvider } from "./Contexts/AuthContext";
 import OrganizationPage from "./Components/OrganizationPage";
+import ProfileDashboard from "./Components/ProfileDashboard";
 import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
               <SignupPage />
             </Route>
             <PrivateRoute exact path="/organization" component={OrganizationPage}/>
+            <Route exact path="/profile">
+              <ProfileDashboard/>
+
+            </Route>
           </Switch>
         </AuthProvider>
       </Router>

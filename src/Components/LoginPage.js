@@ -3,29 +3,38 @@ import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 
+import global from "./global";
+
 export default function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const history = useHistory();
+
 
   async function handleSubmit(e) {
     e.preventDefault();
+    global.globalEmail=emailRef.current.value;
     let cancel = false;
     try {
       
       setError("");
-      setLoading(true);
+      // setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value).then(()=>{
         if (cancel) return;
-      setLoading(false);
+      //setLoading(false);
       })
+
+        console.log(global.signupState+" "+global.globalEmail);
+      if(!global.signupState)
       history.push("/organization");
+      else
+      history.push("/profile");
     } catch (err) {
       setError(err.message);
-      setLoading(false);
+     // setLoading(false);
     }
     cancel=true;
     return cancel;
@@ -66,7 +75,7 @@ export default function LoginPage() {
         <button
           type="submit"
           className="btn btn-sm btn-success"
-          disabled={loading}
+          // disabled={loading}
         >
           Login
         </button>

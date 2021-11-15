@@ -1,4 +1,5 @@
 export default{
     globalEmail:"",
-    signupState:false
+    signupState:false,
+    primaryGST:""
 };

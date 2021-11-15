@@ -8,10 +8,10 @@ import global from "./global";
 
 export default function OrganizationPage() {
   const companyRef = useRef();
-  const phonenumberRef = useRef();
+  const GSTRef = useRef();
   const whatsappnumberRef = useRef();
   const addressRef = useRef();
-  const emailref=useRef();
+  const personRef=useRef();
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -21,26 +21,27 @@ export default function OrganizationPage() {
     e.preventDefault();
     
     //console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
-    db.collection("Org")
-    .add({
-      Company: companyRef.current.value,
-      Phone: phonenumberRef.current.value,
-      Whatsapp: whatsappnumberRef.current.value,
-      Address: addressRef.current.value,
-      Email: emailref.current.value,
+    var docRef = db.collection("Org").doc(currentUser.email);
+
+    
+    return docRef.update({
       
+      Company: companyRef.current.value,
+      Address: addressRef.current.value,
+       GSTINArr: [GSTRef.current.value],
+       Person:personRef.current.value,
+      Whatsapp: whatsappnumberRef.current.value,  
+   
     })
     .then(() => {
-      alert("Your details have been submitted👍");
-      
-      global.signupState=true;
-      console.log(global.signupState+" "+global.globalEmail);
-    
+        console.log("Document successfully updated!");
+        history.push("/profile");
     })
     .catch((error) => {
-      alert(error.message);
-      
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
     });
+    
   }
 
   async function handleLogout() {
@@ -61,6 +62,9 @@ export default function OrganizationPage() {
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
         <strong>Logged in as:</strong> {currentUser.email}
+
+        
+        {/* company */}
         <div className="mb-3">
           <label htmlFor="company" className="form-label">
             Company Name
@@ -74,6 +78,8 @@ export default function OrganizationPage() {
             required
           />
         </div>
+
+        {/* Address */}
         <div className="mb-3">
           <label htmlFor="address" className="form-label">
             Address
@@ -87,32 +93,36 @@ export default function OrganizationPage() {
             required
           />
         </div>
+      {/* GST */}
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            email
+          <label htmlFor="GSTIN" className="form-label">
+            GSTIN
           </label>
           <input
-            type="email"
-            placeholder="anyone@example.com"
+            type="text"
+            placeholder="GSTIN"
             className="form-control"
-            id="email"
-            ref={emailref}
+            id="GSTIN"
+            ref={GSTRef}
             required
           />
         </div>
+        {/* Person of Contact */}
         <div className="mb-3">
-          <label htmlFor="phonenumber" className="form-label">
-            Phone Number
+          <label htmlFor="person" className="form-label">
+            Person of Contact
           </label>
           <input
-            type="number"
-            placeholder="Phone number"
+            type="text"
+            placeholder="Full Name"
             className="form-control"
-            id="phonenumber"
-            ref={phonenumberRef}
+            id="person"
+            ref={personRef}
             required
           />
         </div>
+
+        {/* Whatsapp */}
         <div className="mb-3">
           <label htmlFor="whatsappnumber" className="form-label">
             Whatsapp Number
@@ -126,11 +136,15 @@ export default function OrganizationPage() {
             required
           />
         </div>
+
+        {/* submit */}
         <button
           type="submit"
           className="btn btn-sm btn-success">
           Submit
         </button>
+
+        {/* Logout */}
         <button
           
           className="btn btn-sm btn-success"
@@ -139,15 +153,14 @@ export default function OrganizationPage() {
           Logout
         </button>
       </form>
-    <button onClick={()=>{
+
+    {/* <button onClick={()=>{
      
-      if (!global.signupState) {
-        return setError("Please fill the form details to continue.");
-      }
+      
          
 
       history.push("/profile");
-    }}>Proceed</button>
+    }}>Proceed</button> */}
     </div>
   );
 }

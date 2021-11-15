@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import global from "./global";
 import "../Styling/loginpage.css"
+import { db } from "../firebase";
+
 export default function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -17,6 +19,7 @@ export default function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     global.globalEmail = emailRef.current.value;
+    
     let cancel = false;
     try {
       setError("");
@@ -32,7 +35,40 @@ export default function LoginPage() {
       if (!global.signupState) history.push("/organization");
       else history.push("/profile");
     } catch (err) {
-      setError(err.message);
+       // console.log(global.signupState+" "+global.globalEmail);
+        //validating account setup state
+      
+       var docref=db.collection("Org").doc(emailRef.current.value);
+       setError(err.message);
+        console.log(emailRef.current.value);
+        
+        docref.get().then((doc) => {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                var data=doc.data();
+                if(data.Company===""||data.Address===""||data.GSTINArr===[]||data.Whatsapp===""||data.Person==="")
+                {
+                  console.log("sent to fill organization details due to incomplete data fro organization");
+                    history.push("/organization");
+                }
+                else{
+                  console.log("send to profile page.");
+                  history.push("/profile");
+                }
+                //history.push("/profile");
+            } else {
+                // doc.data() will be undefined in this case
+                //history.push("/organization");
+                alert("Please Signup first");
+
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    
+    }//try
+    
       // setLoading(false);
     }
     cancel = true;

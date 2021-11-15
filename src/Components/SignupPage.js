@@ -3,9 +3,11 @@ import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase";
+import global from "./global";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
+  
   const [contact, setContact] = useState("");
   const [newpassword, setNewpassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -37,10 +39,18 @@ export default function SignupPage() {
     cancel = true;
     console.log(email, contact);
 
-    db.collection("user")
-      .add({
+    
+    db.collection("Org")
+    .doc(email)  
+    .set({
         Email: email,
-        Contact_number: contact,
+        GSTINArr: [],
+         Company: "",
+      Phone: contact,
+      Person:"",
+      Whatsapp: "",
+      Address: "",
+   
       })
       .then(() => {
         setLoading(false);
@@ -68,21 +78,7 @@ export default function SignupPage() {
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
-        <div className="mb-3">
-          <label htmlFor="contact" className="form-label">
-            Contact Number
-          </label>
-          <input
-            type="number"
-            placeholder="phone number"
-            className="form-control"
-            id="contact"
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
-            //ref={contactRef}
-            required
-          />
-        </div>
+        
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email
@@ -98,6 +94,25 @@ export default function SignupPage() {
             required
           />
         </div>
+        
+       
+
+        <div className="mb-3">
+          <label htmlFor="contact" className="form-label">
+            Contact Number
+          </label>
+          <input
+            type="number"
+            placeholder="phone number"
+            className="form-control"
+            id="contact"
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+            //ref={contactRef}
+            required
+          />
+        </div>
+
         <div className="mb-3">
           <label htmlFor="newpassword" className="form-label">
             New Password

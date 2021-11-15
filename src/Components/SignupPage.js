@@ -29,7 +29,8 @@ export default function SignupPage() {
         setLoading(false);
       });
       history.push("/login");
-    } catch (err) {
+    } 
+    catch (err) {
       setError(err.message);
       setLoading(false);
     }

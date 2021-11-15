@@ -6,6 +6,7 @@ import LoginPage from "./Components/LoginPage";
 import HomePage from "./Components/HomePage";
 import { AuthProvider } from "./Contexts/AuthContext";
 import OrganizationPage from "./Components/OrganizationPage";
+import ProfileDashboard from "./Components/ProfileDashboard";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
 function App() {
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <PrivateRoute exact path="/organization" component={OrganizationPage}/>
             <Route path="/forgot-password" component={ForgotPassword} />
+            <Route exact path="/profile">
+              <ProfileDashboard/>
+            </Route>
           </Switch>
         </AuthProvider>
       </Router>

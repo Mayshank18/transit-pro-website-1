@@ -28,9 +28,7 @@ function App() {
             </Route>
             <PrivateRoute exact path="/organization" component={OrganizationPage}/>
             <Route path="/forgot-password" component={ForgotPassword} />
-            <Route exact path="/profile">
-              <ProfileDashboard/>
-            </Route>
+            <PrivateRoute exact path="/profile" component={ProfileDashboard}/>
           </Switch>
         </AuthProvider>
       </Router>

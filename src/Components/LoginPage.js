@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import global from "./global";
 import { db } from "../firebase";
+import Header from "./Header";
 
 export default function LoginPage() {
   const emailRef = useRef();
@@ -72,7 +73,10 @@ export default function LoginPage() {
   }
 
   return (
+    <>
+    <Header/>
     <div className="container">
+      
       <h2>LOGIN</h2>
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -117,5 +121,6 @@ export default function LoginPage() {
         <Link to="/signup">Need an account</Link>
       </div>
     </div>
+    </>
   );
 }

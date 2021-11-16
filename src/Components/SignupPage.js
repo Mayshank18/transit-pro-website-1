@@ -3,6 +3,7 @@ import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase";
+import Header from "./Header";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -44,7 +45,13 @@ export default function SignupPage() {
     .doc(email)  
     .set({
         Email: email,
-        Contact_number: contact,
+        GSTINArr: [],
+        Company: "",
+     Phone: contact,
+     Person:"",
+     Whatsapp: "",
+     Address: "",
+  
       })
       .then(() => {
         setLoading(false);
@@ -69,7 +76,9 @@ export default function SignupPage() {
 
   return (
     <div className="container">
+      <Header/>
       <h2>Signup</h2>
+
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
         <div className="mb-3">

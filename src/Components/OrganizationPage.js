@@ -4,6 +4,7 @@ import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { db } from "../firebase";
 import global from "./global";
+import Header from "./Header";
 
 
 export default function OrganizationPage() {
@@ -11,7 +12,8 @@ export default function OrganizationPage() {
   const phonenumberRef = useRef();
   const whatsappnumberRef = useRef();
   const addressRef = useRef();
-  const emailref=useRef();
+  const GSTRef = useRef();
+  const personRef=useRef();
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -21,20 +23,22 @@ export default function OrganizationPage() {
     e.preventDefault();
     
     //console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
-    db.collection("Org")
-    .add({
+    var docRef = db.collection("Org").doc(currentUser.email);
+
+    
+    return docRef.update({
       Company: companyRef.current.value,
-      Phone: phonenumberRef.current.value,
-      Whatsapp: whatsappnumberRef.current.value,
+     
       Address: addressRef.current.value,
-      Email: emailref.current.value,
+      GSTINArr: [GSTRef.current.value],
+       Person:personRef.current.value,
+      Whatsapp: whatsappnumberRef.current.value,  
+     
       
     })
     .then(() => {
       alert("Your details have been submitted👍");
-      
-      global.signupState=true;
-      console.log(global.signupState+" "+global.globalEmail);
+      history.push("/profile");
     
     })
     .catch((error) => {
@@ -56,7 +60,10 @@ export default function OrganizationPage() {
 
 
   return (
+    <>
+     <Header/>
     <div className="container">
+     
       <h2>Organization details</h2>
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -87,29 +94,31 @@ export default function OrganizationPage() {
             required
           />
         </div>
+        
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            email
+          <label htmlFor="GSTIN " className="form-label">
+            GSTIN
           </label>
           <input
-            type="email"
-            placeholder="anyone@example.com"
+            type="text"
+            placeholder="GSTIN"
             className="form-control"
-            id="email"
-            ref={emailref}
+            id="person"
+            ref={GSTRef}
             required
           />
-        </div>
+          </div>
+
         <div className="mb-3">
-          <label htmlFor="phonenumber" className="form-label">
-            Phone Number
+          <label htmlFor="person " className="form-label">
+            Person of Contact
           </label>
           <input
-            type="number"
-            placeholder="Phone number"
+            type="text"
+            placeholder="Joe Dolla"
             className="form-control"
-            id="phonenumber"
-            ref={phonenumberRef}
+            id="person"
+            ref={personRef}
             required
           />
         </div>
@@ -139,15 +148,8 @@ export default function OrganizationPage() {
           Logout
         </button>
       </form>
-    <button onClick={()=>{
-     
-      if (!global.signupState) {
-        return setError("Please fill the form details to continue.");
-      }
-         
-
-      history.push("/profile");
-    }}>Proceed</button>
+   
     </div>
+    </>
   );
 }

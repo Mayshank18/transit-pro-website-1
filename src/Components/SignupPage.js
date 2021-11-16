@@ -19,6 +19,8 @@ export default function SignupPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    //Email validation & verification
+
     if (newpassword !== confirmpassword) {
       return setError("Passwords do not match");
     }
@@ -30,7 +32,7 @@ export default function SignupPage() {
         if (cancel) return;
         setLoading(false);
       });
-      history.push("/login");
+      //history.push("/login");
     } 
     catch (err) {
       setError(err.message);
@@ -38,7 +40,7 @@ export default function SignupPage() {
     }
     cancel = true;
     console.log(email, contact);
-
+// End of email verification
     
     db.collection("Org")
     .doc(email)  

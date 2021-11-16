@@ -2,10 +2,7 @@
   text-align: center;
 }
 
-.button {
+.button
+{
   padding-top: 20%;
-}
-.button-color {
-  background: #f2c106;
-  border-radius: 44.5px;
 }

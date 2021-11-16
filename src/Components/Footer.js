@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styling/footer.css";
-import whatsapp from "../Photos/whatsapp-logo.png"
+//import whatsapp from "../Photos/whatsapp-logo.png"
 export default function Footer() {
   return (
     <div className="bottomnav">

@@ -5,6 +5,7 @@ import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import global from "./global";
+import { db } from "../firebase";
 
 export default function LoginPage() {
   const emailRef = useRef();

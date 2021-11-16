@@ -16,21 +16,16 @@ function ProfileDashboard() {
         useEffect(() => {
             const getdatafromFirebase=[];
             const sub=db.collection("Org")
-          
-        .where("Email","==", currentUser.email)
-            
+            .where("Email","==", global.globalEmail)
             .get()
             .then((querySnapshot)=>{
                 querySnapshot.forEach((doc)=>{
                     getdatafromFirebase.push({...doc.data(), key: doc.id});
-                    console.log(doc.data.Company);
                 });
                 setPosts(getdatafromFirebase);
                 setLoading(false);
-                console.log(getdatafromFirebase);
-               
+                console.log(global.signupState+" "+global.globalEmail);
             });
-           
 
             //return ()=>sub();
         }, [])
@@ -43,16 +38,7 @@ function ProfileDashboard() {
         }
 
   
-        async function handleLogout() {
-            setError("");
-        
-            try {
-              await logout();
-              history.push("/");
-            } catch (err) {
-              setError(err.message);
-            }
-          }
+
 
     return (
         <div>
@@ -64,8 +50,6 @@ function ProfileDashboard() {
                     
                     <h2>{post.Company}</h2>
                     <h4>{post.Address}</h4>
-                    <h4>{post.Person}</h4>
-                    <h4>{post.GSTINArr}</h4>
                     <h4>{post.Email}</h4>
                     <h4>{post.Phone}</h4>
                     <h4>{post.Whatsapp}</h4>
@@ -74,13 +58,6 @@ function ProfileDashboard() {
                     </div>) ):
                 <h1>No details yet.</h1>
             }
-              <button
-          
-          className="btn btn-sm btn-success"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
         </div>
     )
 }

@@ -3,11 +3,9 @@ import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase";
-import global from "./global";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
-  
   const [contact, setContact] = useState("");
   const [newpassword, setNewpassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -46,13 +44,7 @@ export default function SignupPage() {
     .doc(email)  
     .set({
         Email: email,
-        GSTINArr: [],
-         Company: "",
-      Phone: contact,
-      Person:"",
-      Whatsapp: "",
-      Address: "",
-   
+        Contact_number: contact,
       })
       .then(() => {
         setLoading(false);
@@ -80,25 +72,6 @@ export default function SignupPage() {
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
-        
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="someone@organization.com"
-            className="form-control"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            //ref={emailRef}
-            required
-          />
-        </div>
-        
-       
-
         <div className="mb-3">
           <label htmlFor="contact" className="form-label">
             Contact Number
@@ -114,7 +87,21 @@ export default function SignupPage() {
             required
           />
         </div>
-
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            placeholder="someone@organization.com"
+            className="form-control"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            //ref={emailRef}
+            required
+          />
+        </div>
         <div className="mb-3">
           <label htmlFor="newpassword" className="form-label">
             New Password

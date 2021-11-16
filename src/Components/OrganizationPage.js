@@ -8,10 +8,10 @@ import global from "./global";
 
 export default function OrganizationPage() {
   const companyRef = useRef();
-  const GSTRef = useRef();
+  const phonenumberRef = useRef();
   const whatsappnumberRef = useRef();
   const addressRef = useRef();
-  const personRef=useRef();
+  const emailref=useRef();
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -21,27 +21,26 @@ export default function OrganizationPage() {
     e.preventDefault();
     
     //console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
-    var docRef = db.collection("Org").doc(currentUser.email);
-
-    
-    return docRef.update({
-      
+    db.collection("Org")
+    .add({
       Company: companyRef.current.value,
+      Phone: phonenumberRef.current.value,
+      Whatsapp: whatsappnumberRef.current.value,
       Address: addressRef.current.value,
-       GSTINArr: [GSTRef.current.value],
-       Person:personRef.current.value,
-      Whatsapp: whatsappnumberRef.current.value,  
-   
+      Email: emailref.current.value,
+      
     })
     .then(() => {
-        console.log("Document successfully updated!");
-        history.push("/profile");
+      alert("Your details have been submitted👍");
+      
+      global.signupState=true;
+      console.log(global.signupState+" "+global.globalEmail);
+    
     })
     .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
+      alert(error.message);
+      
     });
-    
   }
 
   async function handleLogout() {
@@ -62,9 +61,6 @@ export default function OrganizationPage() {
       <form onSubmit={handleSubmit}>
         {error && <Alert variant="danger">{error}</Alert>}
         <strong>Logged in as:</strong> {currentUser.email}
-
-        
-        {/* company */}
         <div className="mb-3">
           <label htmlFor="company" className="form-label">
             Company Name
@@ -78,8 +74,6 @@ export default function OrganizationPage() {
             required
           />
         </div>
-
-        {/* Address */}
         <div className="mb-3">
           <label htmlFor="address" className="form-label">
             Address
@@ -93,36 +87,32 @@ export default function OrganizationPage() {
             required
           />
         </div>
-      {/* GST */}
         <div className="mb-3">
-          <label htmlFor="GSTIN" className="form-label">
-            GSTIN
+          <label htmlFor="email" className="form-label">
+            email
           </label>
           <input
-            type="text"
-            placeholder="GSTIN"
+            type="email"
+            placeholder="anyone@example.com"
             className="form-control"
-            id="GSTIN"
-            ref={GSTRef}
+            id="email"
+            ref={emailref}
             required
           />
         </div>
-        {/* Person of Contact */}
         <div className="mb-3">
-          <label htmlFor="person" className="form-label">
-            Person of Contact
+          <label htmlFor="phonenumber" className="form-label">
+            Phone Number
           </label>
           <input
-            type="text"
-            placeholder="Full Name"
+            type="number"
+            placeholder="Phone number"
             className="form-control"
-            id="person"
-            ref={personRef}
+            id="phonenumber"
+            ref={phonenumberRef}
             required
           />
         </div>
-
-        {/* Whatsapp */}
         <div className="mb-3">
           <label htmlFor="whatsappnumber" className="form-label">
             Whatsapp Number
@@ -136,15 +126,11 @@ export default function OrganizationPage() {
             required
           />
         </div>
-
-        {/* submit */}
         <button
           type="submit"
           className="btn btn-sm btn-success">
           Submit
         </button>
-
-        {/* Logout */}
         <button
           
           className="btn btn-sm btn-success"
@@ -153,14 +139,15 @@ export default function OrganizationPage() {
           Logout
         </button>
       </form>
-
-    {/* <button onClick={()=>{
+    <button onClick={()=>{
      
-      
+      if (!global.signupState) {
+        return setError("Please fill the form details to continue.");
+      }
          
 
       history.push("/profile");
-    }}>Proceed</button> */}
+    }}>Proceed</button>
     </div>
   );
 }

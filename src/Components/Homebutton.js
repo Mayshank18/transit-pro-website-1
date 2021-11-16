@@ -1,5 +1,5 @@
 import { withRouter } from "react-router";
-import "../Styling/homebutton.css";
+import "../Styling/login.css";
 import "../App.css";
 const Homebutton = withRouter(({ history }) => {
   return (
@@ -7,13 +7,13 @@ const Homebutton = withRouter(({ history }) => {
       <div>
         <button
           onClick={() => history.push("/login")}
-          className="button-color login-rectangle login-font"
+          className={["button-color","login-rectangle"]}
         >
           Login
         </button>
       </div>
       <div>
-        <button onClick={() => history.push("/signup")} className="button-color signup-rectangle signup-font">Signup</button>
+        <button onClick={() => history.push("/signup")}>Signup</button>
       </div>
     </div>
   );

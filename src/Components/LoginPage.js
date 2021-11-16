@@ -12,34 +12,28 @@ export default function LoginPage() {
   const passwordRef = useRef();
   const { login } = useAuth();
   const [error, setError] = useState("");
-  //const [loading, setLoading] = useState(false);
+  
   const history = useHistory();
 
 
   async function handleSubmit(e) {
     e.preventDefault();
-    global.globalEmail=emailRef.current.value;
+    
     let cancel = false;
     try {
       
       setError("");
-      // setLoading(true);
+    
       await login(emailRef.current.value, passwordRef.current.value).then(()=>{
         if (cancel) return;
-      //setLoading(false);
+ ;
       })
 
-        console.log(global.signupState+" "+global.globalEmail);
-      if(!global.signupState)
-      history.push("/organization");
-      else
-      history.push("/profile");
-    } catch (err) {
-       // console.log(global.signupState+" "+global.globalEmail);
+       
         //validating account setup state
       
        var docref=db.collection("Org").doc(emailRef.current.value);
-       setError(err.message);
+        
         console.log(emailRef.current.value);
         
         docref.get().then((doc) => {
@@ -55,10 +49,10 @@ export default function LoginPage() {
                   console.log("send to profile page.");
                   history.push("/profile");
                 }
-                //history.push("/profile");
+               
             } else {
                 // doc.data() will be undefined in this case
-                //history.push("/organization");
+                
                 alert("Please Signup first");
 
                 console.log("No such document!");
@@ -68,13 +62,14 @@ export default function LoginPage() {
         });
     
     }//try
-    
-      // setLoading(false);
-    cancel = true;
+     catch (err) {
+      setError(err.message);
+  
+    }
+    cancel=true;
     return cancel;
    
   }
-  
 
   return (
     <div className="container">
@@ -110,7 +105,7 @@ export default function LoginPage() {
         <button
           type="submit"
           className="btn btn-sm btn-success"
-          // disabled={loading}
+         
         >
           Login
         </button>

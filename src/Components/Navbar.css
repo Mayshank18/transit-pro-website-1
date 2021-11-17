@@ -1,0 +1,103 @@
+
+  *{
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+:root{
+   
+        --primary-color:#284f6f;
+        --secondary-color: #FCEDF0;
+        --hint: #ff3d64;
+    }
+    
+    .navParent{
+        color: var(--secondary-color);
+background-color: var(--primary-color);
+/* text-align: center; */
+    }
+.navigation
+{
+color: var(--secondary-color);
+background-color: var(--primary-color);
+margin-left: auto;
+margin-right: auto;
+width:90%;
+padding-top: 2rem;
+padding-bottom: 0.5rem;
+
+
+}
+
+.navigation h2{
+  display: inline;
+    width: 30%;
+    margin-left: 2%;
+    margin-right: 8%;
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+  
+    color:white;
+        cursor: pointer;
+    letter-spacing: 0.5px;
+}
+.navigation h2 span{
+    color: var(--hint);
+    margin-left: -0.3rem;
+    font-size: 400;
+}
+
+@media screen and (max-width:768px){
+    .navigation h2{
+        display: block;
+        margin:  auto;
+        width: 70%;
+    }
+
+}
+.navigation div
+{
+    margin: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.navigation li{
+    list-style: none;
+    display: inline;
+    margin: 1rem 1rem;
+    font-weight: 200;
+    
+}
+.navigation li:hover{
+text-decoration: underline;
+}
+
+.navigation .link{
+
+    color: var(--secondary-color);
+    margin: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+ .nav-pills{
+    text-align: right;
+    display: inline;
+    float: right;
+
+}
+
+.active
+{
+    font-weight: bold;
+}
+.bt-logout{
+    background-color: #F2C106;
+    border-radius: 0.7rem;
+    border:none ;
+  
+    margin: 1rem auto;
+    padding: 0.5rem 0.7rem;
+    font-weight:400;
+  text-align: center;
+}

@@ -48,8 +48,8 @@ export default function LoginPage() {
                     history.push("/organization");
                 }
                 else{
-                  console.log("send to profile page.");
-                  history.push("/profile");
+                  console.log("send to landing page.");
+                  history.push("/landing");
                 }
                
             } else {
@@ -108,16 +108,16 @@ export default function LoginPage() {
             ref={passwordRef}
             required
           />
-       
-     
-      </form>
-      <div className="center">
+       <div className="center">
       <button
           type="submit"
         className="sub-button" >
           Submit
         </button>
       </div>
+     
+      </form>
+      
 
       <div className="reset-parent">
         <Link to="/forgot-password" className="reset">Forgot Password</Link>

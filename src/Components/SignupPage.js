@@ -4,6 +4,8 @@ import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase";
 import Header from "./Header";
+import "./SignupPage.css"
+import Footer from "./Footer";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -75,20 +77,22 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="container">
-      <Header/>
+    <div style={{backgroundColor:"#E5E5E5"}}>
+    <Header/>
+    <div className="sign-parent">
+     
       <h2>Signup</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="sign-form">
         {error && <Alert variant="danger">{error}</Alert>}
-        <div className="mb-3">
-          <label htmlFor="contact" className="form-label">
+        <div >
+          <label htmlFor="contact" >
             Contact Number
           </label>
           <input
             type="number"
             placeholder="phone number"
-            className="form-control"
+            
             id="contact"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
@@ -96,14 +100,14 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
+        <div >
+          <label htmlFor="email" >
             Email
           </label>
           <input
             type="email"
             placeholder="someone@organization.com"
-            className="form-control"
+            
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -111,14 +115,14 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="newpassword" className="form-label">
+        <div >
+          <label htmlFor="newpassword" >
             New Password
           </label>
           <input
             type="password"
             placeholder="password"
-            className="form-control"
+            
             id="newpassword"
             //ref={newpasswordRef}
             value={newpassword}
@@ -126,14 +130,14 @@ export default function SignupPage() {
             required
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="confirmpassword" className="form-label">
+        <div >
+          <label htmlFor="confirmpassword" >
             Confirm Password
           </label>
           <input
             type="password"
             placeholder="password"
-            className="form-control"
+            
             id="confirmpassword"
             //ref={confirmpasswordRef}
             value={confirmpassword}
@@ -141,14 +145,18 @@ export default function SignupPage() {
             required
           />
         </div>
+        <div className="center">
         <button
           type="submit"
-          className="btn btn-sm btn-success"
+          className="sub-button"
           disabled={loading}
         >
           Signup
         </button>
+        </div>
       </form>
+    </div>
+    <Footer/>
     </div>
   );
 }

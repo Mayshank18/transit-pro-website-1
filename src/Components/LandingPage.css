@@ -1,0 +1,11 @@
+
+  #row{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    width: 100%;
+}
+.column{
+    background-color: red;
+    border: solid black;
+    text-align: center;
+}

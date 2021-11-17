@@ -1,6 +1,6 @@
 
 
-.form-parent{
+.sign-parent{
     width: 60%;
     align-content: center;
     margin: 5rem auto;
@@ -9,11 +9,11 @@
     border-radius: 0.5rem;
 }
 
-.form-parent h2{
+.sign-parent h2{
     text-align: center;
     padding: 0.5rem;
 }
-.log-form input{
+.sign-form input{
     background-color: #E5E5E5;
     width: 80%;
     margin: 0.5rem 0.5rem;
@@ -24,14 +24,14 @@
     border: none;
     
 }
-.log-form{
+.sign-form{
     width: 70%;
     margin: 1rem auto;
    padding: 1rem;
     
 }
 
-.form-parent label{
+.sign-parent label{
     text-align: left;
     margin-left: 0.5rem;
 }
@@ -50,12 +50,5 @@
     justify-content: center;
     align-items: center;
    
-  }
-  .reset-parent{
-    padding: 1rem;
-
-  }
-  .reset{
-      margin: 1rem 0.5rem;
   }
 

@@ -5,6 +5,7 @@ import global from './global';
 import { useHistory } from "react-router-dom";
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 import Header from './Header';
+import Navbar from './Navbar';
 
 function ProfileDashboard() {
  
@@ -52,7 +53,7 @@ function ProfileDashboard() {
 
     return (
         <>
-        <Header/>
+    <Navbar/>
             <h1>This is profile dashboard.</h1>
             {
                 posts.length>0?
@@ -70,9 +71,9 @@ function ProfileDashboard() {
                     </div>) ):
                 <h1>No details yet.</h1>
             }
-                <button className="btn btn-sm btn-success"   onClick={handleLogout}  >
+                {/* <button className="btn btn-sm btn-success"   onClick={handleLogout}  >
           Logout
-        </button>
+        </button> */}
             
         </>
     )

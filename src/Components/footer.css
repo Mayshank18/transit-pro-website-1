@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+.foot{
+    height: 10vh;
+    background-color: #284F6F;
+   
+    width: 100%;
+  
+   
+
+}
+.foot p{
+    position: relative;
+    background-color: #284F6F;
+    text-align: center;
+    color: #F2C106;
+    font-weight: 400;
+}

@@ -1,0 +1,9 @@
+
+.button-parent button{
+    background-color: #F2C106;
+    border-radius: 0.7rem;
+    border:none ;
+    margin: 1rem 2rem;
+    padding: 0.5rem 0.7rem;
+    font-weight:400;
+}

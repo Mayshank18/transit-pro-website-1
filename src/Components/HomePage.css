@@ -1,0 +1,92 @@
+
+.divide{
+    height: 100vh;
+}
+.Heroleft{
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+    width: 50%;
+    float: left;
+    align-items: center;
+    padding: 2rem 1rem ;
+    text-align: center;
+    
+}
+.banner{
+   width: 100%;
+   padding: 1rem auto;
+
+}
+.Heroleft h1{
+    padding: 1 rem auto;
+    font-family: Roboto;
+font-style: italic;
+font-weight: bolder;
+
+font-size: 250%;
+
+color: #0880A6;
+}
+.Heroleft p{
+    color: rgba(128, 93, 93, 0.65);
+    text-align: left;
+}
+
+.truck-gr{
+    height: 50%;
+    width: 50%;
+   }
+
+   /* right */
+   .HeroRight{
+    
+    width: 50%;
+    float: right;
+    align-items: center;
+    padding: 4rem 2rem ;
+   
+    background-color: rgba(196, 196, 196, 0.38);
+    border-radius: 0.5rem;
+    margin: 4rem auto;
+   padding-bottom: 8rem;
+   }
+   .HeroRight *{
+       display: block;
+       
+   }
+   .HeroRight h1{
+       margin-bottom: 2rem;
+       text-align: center;
+   }
+   .HeroRight form{
+       width: 60%;
+       margin: 1rem auto;
+   }
+   .HeroRight label{
+       margin-top: 1rem;
+       margin-bottom: 1rem;
+   }
+   .HeroRight input {
+       border: none;
+       width: 70%;
+       border-radius: 0.5rem;
+       padding: 0.5rem;
+   }
+   .HeroRight textarea{
+    border: none;
+    width: 70%;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+   }
+
+   .HeroRight button{
+    background-color: #F2C106;
+    border-radius: 0.7rem;
+    border:none ;
+    margin: 1rem 2rem;
+    padding: 0.5rem 0.7rem;
+    font-weight:400;
+    margin: 1rem auto;
+   }
+
+  

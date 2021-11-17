@@ -4,9 +4,10 @@ import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import global from "./global";
+import "./LoginPage.css"
 import { db } from "../firebase";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function LoginPage() {
   const emailRef = useRef();
@@ -73,54 +74,60 @@ export default function LoginPage() {
   }
 
   return (
-    <>
+    <div style={{backgroundColor:"#E5E5E5"}}>
+    
     <Header/>
-    <div className="container">
+  
+    <div className="form-parent">
       
-      <h2>LOGIN</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit} className="log-form">
         {error && <Alert variant="danger">{error}</Alert>}
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
+        
+          <label htmlFor="email" >
             Email
           </label>
           <input
             type="email"
             placeholder="someone@organization.com"
-            className="form-control"
+            
             id="email"
             ref={emailRef}
             required
           />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
+      
+        
+          <label htmlFor="password" >
             Password
           </label>
           <input
             type="password"
             placeholder="password"
-            className="form-control"
+            
             id="password"
             ref={passwordRef}
             required
           />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-sm btn-success"
-         
-        >
-          Login
-        </button>
+       
+     
       </form>
-      <div>
-        <Link to="/forgot-password">Forgot Password</Link>
+      <div className="center">
+      <button
+          type="submit"
+        className="sub-button" >
+          Submit
+        </button>
       </div>
-      <div>
-        <Link to="/signup">Need an account</Link>
+
+      <div className="reset-parent">
+        <Link to="/forgot-password" className="reset">Forgot Password</Link>
+      
+        <Link to="/signup"className="reset">Signup?</Link>
       </div>
     </div>
-    </>
+   
+   <Footer/>
+ 
+    </div>
   );
 }

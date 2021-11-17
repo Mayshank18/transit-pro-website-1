@@ -1,20 +1,21 @@
 import { withRouter } from "react-router";
 import "../Styling/login.css";
 import "../App.css";
+import "./Homebutton.css"
 const Homebutton = withRouter(({ history }) => {
   return (
     <div>
-      <div>
+     <div className="button-parent">
         <button
           onClick={() => history.push("/login")}
-          className={["button-color","login-rectangle"]}
+          className={" "}
         >
           Login
         </button>
-      </div>
-      <div>
+      
+      
         <button onClick={() => history.push("/signup")}>Signup</button>
-      </div>
+        </div>
     </div>
   );
 });

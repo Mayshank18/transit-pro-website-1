@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Styling/header.css"
-import logo from '../Photos/homepage.png'
+import logo from '../Images/homepage.png'
 export default function Header() {
     return (
         <div className="topnav"> 

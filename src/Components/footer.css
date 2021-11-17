@@ -5,16 +5,17 @@
 }
 
 .foot{
-    height: 10vh;
+    height: 5vh;
     background-color: #284F6F;
-   
+  position: relative;
     width: 100%;
   
    
 
 }
-.foot p{
-    position: relative;
+.foot-p{
+    position: absolute;
+
     background-color: #284F6F;
     text-align: center;
     color: #F2C106;

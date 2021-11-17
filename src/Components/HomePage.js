@@ -8,7 +8,7 @@ import Hero from "../images/white.png"
 import truck from "../images/truck.png"
 export default function HomePage() {
   return (
-    <div>
+    <>
       
       <Header/>  
       <div className="divide">
@@ -42,6 +42,6 @@ export default function HomePage() {
       <Footer/>
      
       
-    </div>
+    </>
   );
 }

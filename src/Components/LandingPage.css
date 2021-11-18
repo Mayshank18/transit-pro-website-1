@@ -1,11 +1,36 @@
 
   #row{
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 20% 60% 20%;
     width: 100%;
 }
 .column{
-    background-color: red;
-    border: solid black;
+    
+  
     text-align: center;
+}
+
+.miniProfile{
+  background-color: white;
+  margin: 0.5rem;
+  
+  
+  border-radius: 1rem;
+
+}
+.miniProfile h2{
+  margin: 1rem;
+  font-size: 100%;
+  margin-top: 2rem;
+}
+
+.member{
+  margin-top: 3rem;
+  background-color: #F2C106;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+  padding: 2px;
+  margin-bottom: -1rem;
+  font-size: 10px;
 }

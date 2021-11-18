@@ -37,10 +37,11 @@ function LandingPage() {
     {
         return(
             
-        <div style={{backgroundColor:"#E5E5E5"}}>
+        <div style={{backgroundColor:"#E5E5E5", alignItems:"center"}}>
         <Navbar/>
-            <h1 style={{textAlign:"center"}}>loading .. </h1>
-            <img src={loadgif} alt="" style={{height:"20vh", width:"20vh", margin:"1rem auto"}}/>
+         
+            <img src={loadgif} alt="loading" className="load-img"/>
+            <Footer/>
             </div>
         )
     }

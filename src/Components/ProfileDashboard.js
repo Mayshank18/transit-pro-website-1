@@ -6,7 +6,8 @@ import { useHistory } from "react-router-dom";
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 import Header from './Header';
 import Navbar from './Navbar';
-
+import Footer from './Footer';
+import loadgif from "../images/load.gif"
 function ProfileDashboard() {
  
     const [error, setError] = useState("");
@@ -35,8 +36,14 @@ function ProfileDashboard() {
         if (loading)
         {
             return(
-                <h1>loading data from firestore.. </h1>
-            )
+            
+                <div style={{backgroundColor:"#E5E5E5", alignItems:"center"}}>
+                <Navbar/>
+                 
+                    <img src={loadgif} alt="loading" className="load-img"/>
+                    <Footer/>
+                    </div>
+                )
         }
         async function handleLogout() {
             setError("");

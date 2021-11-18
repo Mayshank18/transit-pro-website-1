@@ -1,13 +1,16 @@
 
 .divide{
     height: 81.5vh;
-    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+
 }
 .Heroleft{
     margin-top: 3rem;
     margin-bottom: 3rem;
-    width: 50%;
-    float: left;
+   
+   
     align-items: center;
     padding: 2rem 1rem ;
     text-align: center;
@@ -42,20 +45,20 @@ color: #0880A6;
 
    /* right */
    .rightParent{
-       width: 50%;
-       float: right;
+      
+     
     /* margin: 2rem; */
    }
    .HeroRight{
     
-    width: 80%;
+    width: 70%;
   
     align-items: center;
     padding: 2rem 0.5rem ;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: rgba(196, 196, 196, 0.38);
     border-radius: 0.5rem;
-    margin: 4rem auto;
+    margin: 3rem auto;
    padding-bottom: 2rem;
    }
    .HeroRight *{

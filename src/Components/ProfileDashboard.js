@@ -134,8 +134,10 @@ function ProfileDashboard() {
                     <h4>GSTIN: {post.GSTINArr}</h4>
                     <h4>Email: {post.Email}</h4>
                     <h4>Phone: {post.Phone}</h4>
-                    {(post.Whatsapp=="")?<h4>Whatsapp: {post.Whatsapp}</h4>:<h4>Whatsapp: {post.Phone}</h4>}
-                    
+                    {(post.Whatsapp=="")?<h4>Whatsapp: {post.Phone}</h4>:<h4>Whatsapp: {post.Whatsapp}</h4>}
+                   
+
+                   
                     
                     </div>) ):
                 <h1>No details yet.</h1>

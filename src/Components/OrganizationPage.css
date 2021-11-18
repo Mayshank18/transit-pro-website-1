@@ -52,3 +52,17 @@
    
   }
 
+.org-form h5{
+    margin: 1rem;
+}
+
+.validateGST{
+    background-color: #284f6f;
+    border-radius: 0.7rem;
+    border:none ;
+  color: white;
+    margin: 0.5rem 1rem ;
+    padding: 0.5rem 0.7rem;
+    font-weight:400;
+  text-align: center;
+}

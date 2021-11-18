@@ -53,6 +53,7 @@ export default function SignupPage() {
      Person:"",
      Whatsapp: "",
      Address: "",
+     INState: "",
   
       })
       .then(() => {

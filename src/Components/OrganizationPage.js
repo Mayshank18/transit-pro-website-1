@@ -9,44 +9,45 @@ import Footer from "./Footer";
 
 
 const GSTDict={
-  "Andaman and Nicobar Islands": "35" ,
- "Andhra Pradesh" :"28" ,
-"Andhra Pradesh" : "37",
-  "Arunachal Pradesh": "12",
-   "Assam": "18",
+  "35":"Andaman and Nicobar Islands" ,
+  "28":"Andhra Pradesh"  ,
+  "37":"Andhra Pradesh" ,
+  "12":"Arunachal Pradesh",
+  "18": "Assam",
     "Bihar": "10",
-     "Chandigarh": '04', 
-     " Chattisgarh": "22",
-     "Dadra and Nagar Haveli": '26',
-     "Daman and Diu": "25",
- "Delhi": "07" ,
- "Goa": '30' ,
- "Gujarat": "24", 
- "Haryana" :"06" ,
- "Himachal Pradesh": "02" ,
- "Jammu and Kashmir": "01" ,
- "Jharkhand": "20" ,
- "Karnataka": "29" ,
- "Kerala" :"32" ,
- "Lakshadweep Islands": "31" ,
- "Madhya Pradesh": "23" ,
- "Maharashtra": "27" ,
- "Manipur": "14" ,
- "Meghalaya": "17" ,
- "Mizoram": "15" ,
- "Nagaland": "13" ,
- "Odisha" :"21" ,
- "Pondicherry": "34" ,
- "Punjab" :"03" ,
- "Rajasthan": "08" ,
- "Sikkim": "11" ,
- "Tamil Nadu": "33" ,
- "Telangana" :"36" ,
- "Tripura": "16" ,
- "Uttar Pradesh": "09" ,
- "Uttarakhand": "05" ,
- "West Bengal": "19" ,
+    '04': "Chandigarh", 
+     "22": " Chattisgarh",
+    "26" :"Dadra and Nagar Haveli",
+     "25" :"Daman and Diu",
+    "07":"Delhi" ,
+ "30":"Goa" ,
+ "24":"Gujarat", 
+ "06": "Haryana"  ,
+  "02":"Himachal Pradesh" ,
+  "01":"Jammu and Kashmir" ,
+   "20":"Jharkhand" ,
+ "29":"Karnataka",
+ "32": "Kerala"  ,
+  "31":"Lakshadweep Islands" ,
+   "23":"Madhya Pradesh" ,
+   "27": "Maharashtra" ,
+   "14": "Manipur" ,
+   "17":"Meghalaya" ,
+   "15":"Mizoram" ,
+   "13":"Nagaland" ,
+   "21":"Odisha"  ,
+   "34":"Pondicherry" ,
+   "03":"Punjab"  ,
+   "08": "Rajasthan" ,
+    "11":"Sikkim" ,
+    "33":"Tamil Nadu" ,
+    "36":"Telangana"  ,
+    "16":"Tripura" ,
+    "09":"Uttar Pradesh" ,
+    "05": "Uttarakhand" ,
+    "19": "West Bengal" ,
 }
+const codes=Object.keys(GSTDict);
 
 export default function OrganizationPage() {
   const companyRef = useRef();
@@ -56,14 +57,21 @@ export default function OrganizationPage() {
   const GSTRef = useRef();
   const personRef=useRef();
   const [error, setError] = useState("");
+  const [stateValue,setStatevalue]=useState("");
+  const [Gst,setGst]=useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();
-  
+  const [invalidGst,setInvalidGst]=useState(true);
 
   async function handleSubmit(e){
     e.preventDefault();
-    
+    validateCode();
     //console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
+    if(invalidGst){
+      setError("Please provide valid Gst");
+    }
+    
+    else{
     var docRef = db.collection("Org").doc(currentUser.email);
 
     
@@ -74,7 +82,7 @@ export default function OrganizationPage() {
       GSTINArr: [GSTRef.current.value],
        Person:personRef.current.value,
       Whatsapp: whatsappnumberRef.current.value,  
-     
+     INState: stateValue,
       
     })
     .then(() => {
@@ -86,6 +94,7 @@ export default function OrganizationPage() {
       alert(error.message);
       
     });
+  }//else
   }
 
   async function handleLogout() {
@@ -96,6 +105,32 @@ export default function OrganizationPage() {
       history.push("/");
     } catch (err) {
       setError(err.message);
+    }
+  }
+  function validateCode(){
+    //console.log(Gst);
+   
+    if(Gst.length==15 && Gst.charAt(13)=="Z")
+    {
+      //check state
+      var state=Gst.substring(0,2);
+      if(state in GSTDict){
+        setStatevalue(GSTDict[state]);
+        console.log(" valid Gst");
+        setInvalidGst(false);
+      }
+      else{
+        console.log("invalid state");
+        setStatevalue("Invalid State code");
+      }
+     
+      //valid length and checksum
+    }
+    else{
+      //invalid length or Z missing
+      console.log("invalid length");
+      setStatevalue("Invalid GST");
+      
     }
   }
 
@@ -143,11 +178,20 @@ export default function OrganizationPage() {
           <input
             type="text"
             placeholder="GSTIN"
-            
+            onChange={(e)=>{
+              setGst(e.target.value)
+            if(e.target.value.length!=15 ||e.target.value.charAt(13)!="Z")
+            {
+              setInvalidGst(true);
+              console.log(invalidGst);
+            }
+            }}
             id="person"
             ref={GSTRef}
             required
           />
+          <h5>{stateValue}</h5>
+          <button className="validateGST" onClick={validateCode}>Validate Gst</button>
           </div>
 
         <div >
@@ -180,6 +224,7 @@ export default function OrganizationPage() {
         <button
           type="submit"
           className="sub-button"
+
           >
           Submit
         </button>

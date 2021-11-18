@@ -62,6 +62,7 @@ function ProfileDashboard() {
                     <h2>{post.Company}</h2>
                     <h4>{post.Address}</h4>
                     <h4>{post.Person}</h4>
+                    <h4>{post.INState}</h4>
                     <h4>{post.GSTINArr}</h4>
                     <h4>{post.Email}</h4>
                     <h4>{post.Phone}</h4>

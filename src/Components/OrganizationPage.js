@@ -220,7 +220,7 @@ export default function OrganizationPage() {
           />
         </div>
         <div className="check">
-          <label>Different Whatsapp Number?</label>
+          <label>Whatsapp on Primary Number</label>
           <input type="checkbox"
           checked={isChecked}
           onChange={handleCheck}

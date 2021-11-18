@@ -20,7 +20,7 @@ export default function HomePage() {
         <img src={truck} alt="Truck" className="truck-gr"/>
       </div>
       {/* Left element */}
-
+      <div className="rightParent">
       <div className="HeroRight">
 
         <h1>Contact Us</h1>
@@ -36,6 +36,7 @@ export default function HomePage() {
       <button type="submit">Submit</button>
         </form>
 
+      </div>
       </div>
       </div>
       

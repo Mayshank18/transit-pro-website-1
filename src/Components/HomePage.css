@@ -1,10 +1,10 @@
 
 .divide{
-    height: 115vh;
+    height: 81.5vh;
     
 }
 .Heroleft{
-    margin-top: 10rem;
+    margin-top: 3rem;
     margin-bottom: 3rem;
     width: 50%;
     float: left;
@@ -14,7 +14,7 @@
     
 }
 .banner{
-   width: 100%;
+   width: 80%;
    padding: 1rem auto;
 
 }
@@ -22,34 +22,41 @@
     padding: 1 rem auto;
     font-family: Roboto;
 font-style: italic;
-font-weight: bolder;
+font-weight: 700;
 
-font-size: 250%;
+font-size: 150%;
 
 color: #0880A6;
 }
 .Heroleft p{
     color: rgba(128, 93, 93, 0.65);
     text-align: left;
+    margin: 1rem auto;
+    width: 50%;
 }
 
 .truck-gr{
-    height: 50%;
-    width: 50%;
+    height: 30%;
+    width: 30%;
    }
 
    /* right */
+   .rightParent{
+       width: 50%;
+       float: right;
+    /* margin: 2rem; */
+   }
    .HeroRight{
     
-    width: 50%;
-    float: right;
+    width: 80%;
+  
     align-items: center;
-    padding: 4rem 2rem ;
+    padding: 2rem 0.5rem ;
    
     background-color: rgba(196, 196, 196, 0.38);
     border-radius: 0.5rem;
     margin: 4rem auto;
-   padding-bottom: 8rem;
+   padding-bottom: 2rem;
    }
    .HeroRight *{
        display: block;
@@ -60,7 +67,7 @@ color: #0880A6;
        text-align: center;
    }
    .HeroRight form{
-       width: 60%;
+       width: 80%;
        margin: 1rem auto;
    }
    .HeroRight label{

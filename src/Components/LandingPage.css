@@ -13,7 +13,7 @@
 .miniProfile{
   background-color: white;
   margin: 0.5rem;
-  
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   
   border-radius: 1rem;
 
@@ -21,7 +21,8 @@
 .miniProfile h2{
   margin: 1rem;
   font-size: 100%;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  padding-top: 2rem;
 }
 
 .member{
@@ -33,4 +34,83 @@
   padding: 2px;
   margin-bottom: -1rem;
   font-size: 10px;
+}
+.reqBox{
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 50%;
+  margin: 1rem auto;
+  padding: 0.7rem 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.reqtruck{
+  height: 20px;
+  display: inline;
+  text-align: left;
+}
+.reqinp{
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+  background-color: #F4F1E6;
+  margin-left: 2rem;
+}
+.liverfq{
+ background-color: #F2C106;
+ border-radius: 1rem;
+ padding: 1rem; 
+ width: 70%;
+ margin: 1rem auto;
+}
+.liverfq h3 span{
+  color:#284f6f;
+}
+
+.list-rfq{
+  margin: 1rem;
+  background-color: #D1A80B;
+  box-shadow: #F2C106 3px 3px 6px 0px inset, rgba(184, 187, 5, 0.5) -3px -3px 6px 1px inset;
+  padding: 2rem 0.5rem;
+
+}
+.feed{
+  background-color: #929292A6;
+  margin: 2rem 1rem;
+  width: 70%;
+  border-radius: 1rem;
+  color: white;
+  margin: 1rem auto;
+  min-height: 20vh;
+}
+
+.util{
+  background-color: white;
+  border-radius: 1rem;
+  text-align: center;
+  width: 90%;
+  margin: 1rem auto;
+  padding:1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.bt-util{
+  display: block;
+  margin: 1rem auto;
+  background-color: #F2C106;
+  border-radius: 0.7rem;
+  border:none ;
+width: 80%;
+  
+  padding: 0.5rem 0.7rem;
+  font-weight:400;
+text-align: center;
+
+}
+.data{
+  background-color: white;
+  border-radius: 1rem;
+  text-align: center;
+  width: 90%;
+  margin: 1rem auto;
+  padding:1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

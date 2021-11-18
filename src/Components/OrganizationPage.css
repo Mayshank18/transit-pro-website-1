@@ -13,6 +13,12 @@
     text-align: center;
     padding: 0.5rem;
 }
+.check{
+    margin: 0;
+    margin: 1rem 2rem;
+  
+ }
+ 
 .org-form input{
     background-color: #E5E5E5;
     width: 80%;
@@ -65,4 +71,19 @@
     padding: 0.5rem 0.7rem;
     font-weight:400;
   text-align: center;
+}
+.check{
+    margin: 1rem ;
+    padding: 1rem;
+    margin-left: 0;
+}
+.check label{
+    width: 70%;
+    float: left;
+}
+.check input{
+    /* vertical-align: middle; */
+    margin-top: 0.5rem;
+    width: 20%;
+    text-align: left    ;
 }

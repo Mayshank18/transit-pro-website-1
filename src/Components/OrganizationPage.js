@@ -6,6 +6,7 @@ import { db } from "../firebase";
 import "./OrganizationPage.css"
 import Header from "./Header";
 import Footer from "./Footer";
+import { Checkbox } from "react-bootstrap";
 
 
 const GSTDict={
@@ -62,7 +63,8 @@ export default function OrganizationPage() {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [invalidGst,setInvalidGst]=useState(true);
-
+  const [dispWhatsapp,setdispWhatsapp]=useState("none");
+  const [isChecked, setIsChecked] = useState(true);
   async function handleSubmit(e){
     e.preventDefault();
     validateCode();
@@ -131,6 +133,16 @@ export default function OrganizationPage() {
       console.log("invalid length");
       setStatevalue("Invalid GST");
       
+    }
+  }
+  function handleCheck(){
+    setIsChecked(!isChecked);
+    if(isChecked)
+    {
+      setdispWhatsapp("block");
+    }
+    else{
+      setdispWhatsapp("none");
     }
   }
 
@@ -207,7 +219,15 @@ export default function OrganizationPage() {
             required
           />
         </div>
-        <div >
+        <div className="check">
+          <label>Different Whatsapp Number?</label>
+          <input type="checkbox"
+          checked={isChecked}
+          onChange={handleCheck}
+           />
+          
+        </div>
+        <div style={{display:dispWhatsapp}}>
           <label htmlFor="whatsappnumber" >
             Whatsapp Number
           </label>
@@ -217,7 +237,8 @@ export default function OrganizationPage() {
             
             id="whatsappnumber"
             ref={whatsappnumberRef}
-            required
+            
+         
           />
         </div>
         <div className="center">

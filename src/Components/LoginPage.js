@@ -80,7 +80,7 @@ export default function LoginPage() {
   
     <div className="form-parent">
       
-      <h2>Login</h2>
+      <h2>Welcome back!</h2>
       <form onSubmit={handleSubmit} className="log-form">
         {error && <Alert variant="danger">{error}</Alert>}
         

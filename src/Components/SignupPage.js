@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { db } from "../firebase";
 import Header from "./Header";
 import "./SignupPage.css"
@@ -82,7 +82,7 @@ export default function SignupPage() {
     <Header/>
     <div className="sign-parent">
      
-      <h2>Signup</h2>
+      <h2>Create a fresh account with us!</h2>
 
       <form onSubmit={handleSubmit} className="sign-form">
         {error && <Alert variant="danger">{error}</Alert>}
@@ -156,6 +156,10 @@ export default function SignupPage() {
         </button>
         </div>
       </form>
+      <div className="reset-parent">
+       
+        <Link to="/login"className="reset">Already a customer? Login.</Link>
+      </div>
     </div>
     <Footer/>
     </div>

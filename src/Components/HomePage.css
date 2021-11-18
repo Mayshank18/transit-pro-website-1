@@ -52,7 +52,7 @@ color: #0880A6;
   
     align-items: center;
     padding: 2rem 0.5rem ;
-   
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: rgba(196, 196, 196, 0.38);
     border-radius: 0.5rem;
     margin: 4rem auto;

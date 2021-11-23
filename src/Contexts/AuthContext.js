@@ -16,12 +16,13 @@ export function AuthProvider({ children }) {
       auth.createUserWithEmailAndPassword(email , password)
       .then((userCredential)=>{
           // send verification mail.
-        userCredential.user.sendEmailVerification({
-          url: "http://localhost:3000/login?confirm_email=true",
-        });
+        // userCredential.user.sendEmailVerification({
+        //   url: "http://localhost:3000/login?confirm_email=true",
+        // });
       
-        auth.signOut();
-        alert("Verification email has been sent");
+        //auth.signOut();
+        alert("Sign-up successful.");
+        
       })
       .catch()
     )

@@ -33,7 +33,8 @@ export default function SignupPage() {
         if (cancel) return;
         setLoading(false);
       });
-      //history.push("/login");
+    history.push("/organization");
+    console.log("redirecting to org page")
     } 
     catch (err) {
       setError(err.message);

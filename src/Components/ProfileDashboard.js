@@ -121,7 +121,7 @@ function ProfileDashboard() {
                  {/* profile card over */}
              {/* details card below */}
             <div className="tab-parent">
-             <div id="detailTab">
+             <div id="detail-Tab">
                  <h2 >My Details</h2>
                     <div className="icon-edit" onClick={handleEdit}><GrEdit /></div>
                     <div  className="icon-add" onClick={handleList}><GrAdd /></div>

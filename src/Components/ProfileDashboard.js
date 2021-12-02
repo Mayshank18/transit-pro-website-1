@@ -8,7 +8,7 @@ import Header from './Header';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import loadgif from "../images/load.gif"
-import {GrAdd} from "react-icons/gr"
+import {GrAdd,GrEdit} from "react-icons/gr"
 function ProfileDashboard() {
  
     const [error, setError] = useState("");
@@ -57,7 +57,10 @@ function ProfileDashboard() {
               setError(err.message);
             }
           }
-  
+          function handleEdit(){
+                history.push("/editdetails")
+
+          }
           function handleList(){
               if(disp=="none")
               {
@@ -120,7 +123,8 @@ function ProfileDashboard() {
             <div className="tab-parent">
              <div id="detailTab">
                  <h2 >My Details</h2>
-                    <div className="icon" onClick={handleList}><GrAdd /></div>
+                    <div className="icon-edit" onClick={handleEdit}><GrEdit /></div>
+                    <div  className="icon-add" onClick={handleList}><GrAdd /></div>
                     </div>
                  <div className="detailsListParent" style={{display:disp}}>
                  {
@@ -134,7 +138,7 @@ function ProfileDashboard() {
                     <h4>GSTIN: {post.GSTINArr}</h4>
                     <h4>Email: {post.Email}</h4>
                     <h4>Phone: {post.Phone}</h4>
-                    {(post.Whatsapp=="")?<h4>Whatsapp: {post.Phone}</h4>:<h4>Whatsapp: {post.Whatsapp}</h4>}
+                    {(post.Whatsapp=="NA")?<h4>Whatsapp: {post.Phone}</h4>:<h4>Whatsapp: {post.Whatsapp}</h4>}
                    
 
                    

@@ -42,7 +42,7 @@ export default function LoginPage() {
             if (doc.exists) {
                 console.log("Document data:", doc.data());
                 var data=doc.data();
-                if(data.Company===""||data.Address===""||data.GSTINArr===[]||data.Whatsapp===""||data.Person==="")
+                if(data.Phone===""||data.INState===""||data.Person=="")
                 {
                   console.log("sent to fill organization details due to incomplete data fro organization");
                     history.push("/organization");

@@ -10,6 +10,7 @@ import ProfileDashboard from "./Components/ProfileDashboard";
 import LandingPage from "./Components/LandingPage"
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
+import EditDetails from "./Components/EditDetails";
 function App() {
 
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/forgot-password" component={ForgotPassword} />
             <PrivateRoute exact path="/landing" component={LandingPage}/>
             <PrivateRoute exact path="/profile" component={ProfileDashboard}/>
+            <PrivateRoute exact path="/editdetails" component={EditDetails}/>
           </Switch>
         </AuthProvider>
       </Router>

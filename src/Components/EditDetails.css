@@ -1,0 +1,8 @@
+.fieldGrid{
+    display: grid;
+    grid-template-columns: 100% 0%;
+}
+
+.fieldGrid input{
+    padding: 0.5rem;
+}

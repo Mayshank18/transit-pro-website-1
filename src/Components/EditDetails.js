@@ -1,12 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { useAuth } from "../Contexts/AuthContext";
 import { db } from "../firebase";
 import "./OrganizationPage.css"
+import "./EditDetails.css"
 import Header from "./Header";
 import Footer from "./Footer";
 import { Checkbox } from "react-bootstrap";
+import { GrEdit } from "react-icons/gr";
 
 
 const GSTDict={
@@ -65,10 +67,46 @@ export default function OrganizationPage() {
   const [invalidGst,setInvalidGst]=useState(true);
   const [dispWhatsapp,setdispWhatsapp]=useState("none");
   const [isChecked, setIsChecked] = useState(true);
-  async function handleSubmit(e){
+  const [loading,setLoading]=useState(true);
+  const [posts,setPosts]=useState([]);
+ const [cf1,setCf1]=useState("block");
+ const [cf2,setCf2]=useState("none");
+ const [af1,setAf1]=useState("block");
+ const [af2,setAf2]=useState("none");
+ const [gf1,setGf1]=useState("block");
+ const [gf2,setGf2]=useState("none");
+ const [pf1,setPf1]=useState("block");
+ const [pf2,setPf2]=useState("none");
+
+
+  useEffect(() => {
+    const getdatafromFirebase=[];
+    const sub=db.collection("Org")
+    .where("Email","==", currentUser.email)
+    .get()
+    .then((querySnapshot)=>{
+        querySnapshot.forEach((doc)=>{
+            getdatafromFirebase.push({...doc.data(), key: doc.id});
+            console.log(doc);
+        });
+        setPosts(getdatafromFirebase);
+        setLoading(false);
+        console.log("Inside Edit details: "+getdatafromFirebase);
+        // setUser(getdatafromFirebase);
+      
+    });
+
+    //return ()=>sub();
+}, [])
+let inpname,inpvalue
+//load from db
+
+
+async function handleSubmit(e){
     e.preventDefault();
+    console.log("submitted "+addressRef.current.value+" "+GSTRef.current.value+" "+companyRef.current.value);
     validateCode();
-    //console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
+    console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
     if(invalidGst){
       setError("Please provide valid Gst");
     }
@@ -120,8 +158,9 @@ export default function OrganizationPage() {
       
     });
   }
-  }//else
+ }//else
   }
+
 
   async function handleLogout() {
     setError("");
@@ -176,72 +215,148 @@ export default function OrganizationPage() {
      <Header/>
     <div className="org-parent">
      
-      <h2>Organization details</h2>
-      <form onSubmit={handleSubmit} className="org-form">
+      <h2>Edit details</h2>
+      <form onSubmit={handleSubmit} noValidate className="org-form">
         {error && <Alert variant="danger">{error}</Alert>}
         <strong>Logged in as:</strong> {currentUser.email}
         <div >
           <label htmlFor="company" >
             Company Name
           </label>
-          <input
-            type="text"
-            placeholder="Company Name"
-            
-            id="company"
-            ref={companyRef}
-            required
-          />
+
+           <div className="fieldGrid">
+            {
+                
+                posts.length>0?
+                (posts.map((post)=> <div>
+                    <input
+                type="text"
+                placeholder="Company Name"
+               
+                id="company1"
+                ref={companyRef}
+                required               
+                // style={{display: cf1}}               
+                defaultValue= {post.Company}/> 
+                {/* c2 */}
+                
+                </div> ) ):
+
+               <input type="text" placeholder="Company Name" />
+            }
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+                {/* input field parent div end */}
         </div>
         <div >
           <label htmlFor="address" >
             Address
           </label>
-          <input
+          <div className="fieldGrid">
+            {
+                posts.length>0?
+                (posts.map((post)=>  <div>
+                <input
             type="text"
             placeholder="Address"
-            
-            id="address"
-            ref={addressRef}
-            required
-          />
+           
+            id="add1"
+          ref={addressRef}
+            required               
+            // style={{display: af1}}               
+            defaultValue= {post.Address}/> 
+            {/* c2 */}
+            {/* <input
+            type="text"
+            placeholder=" Address"
+           
+            id="add2"
+          
+            required               
+            style={{display: af2}}               
+            />  */}
+
+            </div>) ):
+               <input type="text" placeholder="Address" />
+            }
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+         
+          
         </div>
         
         <div >
           <label htmlFor="GSTIN " >
             GSTIN
           </label>
-          <input
-            type="text"
-            placeholder="GSTIN"
-            onChange={(e)=>{
-              setGst(e.target.value)
-            if(e.target.value.length!=15 ||e.target.value.charAt(13)!="Z")
+
+
+          <div className="fieldGrid">
             {
-              setInvalidGst(true);
-              console.log(invalidGst);
+                posts.length>0?
+                (posts.map((post)=>  <div>
+                <input
+           type="text"
+           placeholder="GSTIN"
+           onChange={(e)=>{
+             setGst(e.target.value)
+           if(e.target.value.length!=15 ||e.target.value.charAt(13)!="Z")
+           {
+             setInvalidGst(true);
+             console.log(invalidGst);
+           }
+           }}
+           id="person"
+           ref={GSTRef}
+           defaultValue={post.GSTINArr[0]}
+           required
+         />
+         
+
+            </div>) ):
+               <input type="text" placeholder="Address" />
             }
-            }}
-            id="person"
-            ref={GSTRef}
-            required
-          />
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+        
+         
+            
+         
           <h5>{stateValue}</h5>
           <button className="validateGST" onClick={validateCode}>Validate Gst</button>
           </div>
 
         <div >
-          <label htmlFor="person " >
+          <label >
             Person of Contact
           </label>
-          <input
+
+          <div className="fieldGrid">
+            {
+                posts.length>0?
+                (posts.map((post)=>  
+                <div>
+                <input
             type="text"
-            placeholder="Joe Dolla"
-            
-            id="person"
-            ref={personRef}
-            required
-          />
+            placeholder="Joa"
+           
+            id="person1"
+         
+            required               
+                          
+            defaultValue= {post.Person}/> 
+            {/* c2 */}
+           
+
+            </div>) ):
+               <input type="text" placeholder="GSTIN" />
+            }
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+
+
+         
+        
         </div>
         <div className="check">
           <label>Whatsapp on Primary Number</label>

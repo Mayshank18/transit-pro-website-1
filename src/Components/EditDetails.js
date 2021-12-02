@@ -323,7 +323,7 @@ async function handleSubmit(e){
             
          
           <h5>{stateValue}</h5>
-          <button className="validateGST" onClick={validateCode}>Validate Gst</button>
+          <button className="validateGST" type="button" onClick={validateCode}>Validate Gst</button>
           </div>
 
         <div >

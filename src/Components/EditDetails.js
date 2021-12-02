@@ -341,7 +341,7 @@ async function handleSubmit(e){
             placeholder="Joa"
            
             id="person1"
-         
+         ref={personRef}
             required               
                           
             defaultValue= {post.Person}/> 

@@ -55,6 +55,13 @@ export default function SignupPage() {
      Whatsapp: "",
      Address: "",
      INState: "",
+     Trucks:0,
+     Revenue:0,
+     Exp_Companies:"",
+     Sector:"",
+     Service:""
+
+
   
       })
       .then(() => {

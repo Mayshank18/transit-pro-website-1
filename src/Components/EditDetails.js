@@ -52,7 +52,7 @@ const GSTDict={
 }
 const codes=Object.keys(GSTDict);
 
-export default function OrganizationPage() {
+export default function EditDetails() {
   const companyRef = useRef();
   const phonenumberRef = useRef();
   const whatsappnumberRef = useRef();

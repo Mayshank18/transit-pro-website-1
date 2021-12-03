@@ -47,6 +47,10 @@ export default function LoginPage() {
                   console.log("sent to fill organization details due to incomplete data fro organization");
                     history.push("/organization");
                 }
+                else if (data.Revenue===""||data.Trucks===0||data.Exp_Companies==="") {
+                  console.log("sent to other details which are empty")
+                  history.push("/otherdetails")
+                }
                 else{
                   console.log("send to landing page.");
                   history.push("/landing");

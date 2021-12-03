@@ -1,0 +1,19 @@
+.rev-select{
+    background-color: #E5E5E5;
+    width: 80%;
+    margin: 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: none;
+    padding-right: 1rem;
+}
+.rev-select option{
+    border: none;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background-color: #E5E5E5;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}

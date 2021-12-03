@@ -82,7 +82,7 @@
    width: 80%;
    margin: 1rem auto;
    display: grid;
-   grid-template-columns: 40% 30% 30%;
+   grid-template-columns: 20% 30% 50%;
    background-color: white;
    border-radius: 0.5rem;
 
@@ -109,6 +109,7 @@
   padding-right: 1rem;
   font-weight: bolder;
   font-size: 150%;
+  cursor: pointer;
 }
 .icon-edit{
     text-align: left;
@@ -116,7 +117,9 @@
    padding: 0.5rem;
    padding-right: 1rem;
    font-weight: bolder;
-   font-size: 150%;
+   font-size: 130%;
+   padding-bottom: 1rem;
+   cursor: pointer;
 }
 .icon-add{
     text-align: right;
@@ -125,6 +128,7 @@
    padding-right: 1rem;
    font-weight: bolder;
    font-size: 150%;
+   cursor: pointer;
 }
 
 .detailsList h4{

@@ -89,7 +89,7 @@ export default function SignupPage() {
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
       <Helmet>
-        <title>Transit Pro|Create a new Account</title>
+        <title>Transit Pro | Create a new Account</title>
       </Helmet>
     <Header/>
     <div className="sign-parent">

@@ -141,7 +141,7 @@ function LandingPage() {
              <h3>My Data</h3>
              <button className="bt-util" onClick={()=>setIsopen(true)}>Per Kg</button>
              <Popup trigger={isOpen} setTrigger={setIsopen}>
-               <form onSubmit={formHandler}>
+               <form className="pop-form" onSubmit={formHandler}>
             <a className="dwnld-link sub-button" href="https://firebasestorage.googleapis.com/v0/b/transit-pro-fdf25.appspot.com/o/files%2FTransit%20template%2FTransit%20Template.xlsx?alt=media&token=e9911270-ad1c-4083-b947-536b82bf899c">Download Template</a>
                    
                  <input type="file" style={{display:"block"}}/>
@@ -151,7 +151,7 @@ function LandingPage() {
                     <p style={{display: uploadPc}}>Uploaded {progress}%</p>
              </Popup>
                  
-                 <button className="bt-util">Per Tonne</button>
+                 <button className="bt-util"onClick={()=>setIsopen(true)}>Per Tonne</button>
                  
                  <button className="bt-util">Favourite Lanes</button>
              </div>

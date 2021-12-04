@@ -131,3 +131,11 @@ text-align: center;
 
 
 }
+
+.pop-form{
+  padding: 1rem;
+
+}
+.pop-form input{
+  margin: 2rem auto;
+}

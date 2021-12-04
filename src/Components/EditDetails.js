@@ -54,12 +54,12 @@ const GSTDict={
 const codes=Object.keys(GSTDict);
 
 export default function EditDetails() {
-  const companyRef = useRef();
+ 
   
   const phoneRef= useRef();
-  const whatsappnumberRef = useRef();
+ 
   const addressRef = useRef();
-  const GSTRef = useRef();
+
   const personRef=useRef();
   const [error, setError] = useState("");
   const [stateValue,setStatevalue]=useState("");
@@ -99,14 +99,12 @@ let inpname,inpvalue
 
 async function handleSubmit(e){
     e.preventDefault();
-    console.log("submitted "+addressRef.current.value+" "+GSTRef.current.value+" "+companyRef.current.value);
-    validateCode();
-    console.log(companyRef.current.value+" "+phoneRef+" "+addressRef);
-    if(invalidGst){
-      setError("Please provide valid Gst");
-    }
+    console.log("submitted "+addressRef.current.value+" "+phoneRef.current.value+" "+personRef.current.value);
+   
+
     
-    else{
+    
+   
     var docRef = db.collection("Org").doc(currentUser.email);
 
    
@@ -131,7 +129,7 @@ async function handleSubmit(e){
       });
    
     
- }//else
+ //else
   }
 
 
@@ -233,7 +231,7 @@ async function handleSubmit(e){
         </div>
         
         <div >
-          <label htmlFor="address" >
+          <label  >
             Phone
           </label>
           <div className="fieldGrid">

@@ -82,7 +82,7 @@ export default function LoginPage() {
 
     <div style={{backgroundColor:"#E5E5E5"}}>
     <Helmet>
-        <title>Transit Pro|Login </title>
+        <title>Transit Pro | Login </title>
       </Helmet>
     <Header/>
   

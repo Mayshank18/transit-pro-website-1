@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Navbar from './Navbar'
 import { useAuth } from "../Contexts/AuthContext";
-import {app, auth, db} from "../firebase"
+import {app, auth, db, storage} from "../firebase"
 import "./LandingPage.css"
 import { NavLink } from 'react-router-dom'
 import Footer from './Footer'
@@ -10,13 +10,16 @@ import truck from "../images/truck2.png"
 import loadgif from "../images/load.gif"
 import Popup from './Popup';
 
+import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage';
+
 function LandingPage() {
-    
+  
     const { currentUser, logout } = useAuth();
         const [loading,setLoading]=useState(true);
         const [posts,setPosts]=useState([]);
         const [isOpen,setIsopen]=useState(false);
-
+        const [progress,setProgress]=useState(0);
+        const [userDetails,setUserDetails]=useState('');
     useEffect(() => {
         const getdatafromFirebase=[];
         const sub=db.collection("Org")
@@ -25,26 +28,38 @@ function LandingPage() {
         .then((querySnapshot)=>{
             querySnapshot.forEach((doc)=>{
                 getdatafromFirebase.push({...doc.data(), key: doc.id});
+                setUserDetails(doc.data());
             });
             setPosts(getdatafromFirebase);
             setLoading(false);
-            console.log(getdatafromFirebase);
+           
         });
 
         //return ()=>sub();
     }, [])
 
-    const [fileUrl,setfileUrl]=useState(null);
-     function fileHandler(e){
-            const file=e.target.files[0]
-            const storageRef=app.storage().ref()
-            const fileRef=storageRef.child(file.name)
-            fileRef.put(file).then(()=>{
-                console.log("uploaded file"+file.name);
-            })
-           // setfileUrl(await fileRef.getDownloadURL())
-           
+    function formHandler(e){
+        e.preventDefault();
+        const file=e.target[0].files[0];
+       fileHandler(file);
     }
+    
+     const fileHandler = (file)=>{
+          if(!file) return;
+          const storageRef=ref(storage, `/files/${userDetails.Company}/${file.name}`)
+            const uploadTask= uploadBytesResumable(storageRef,file);
+            uploadTask.on("state_changed",(snapshot)=>{
+                const prog= Math.round((snapshot.bytesTransferred/snapshot.totalBytes)*100);
+            setProgress(prog);
+            },(err)=>console.log(err),
+            ()=>{
+                getDownloadURL(uploadTask.snapshot.ref)
+                .then((url)=>console.log(url));
+            }
+            );
+        
+           
+    };
 
     if (loading)
     {
@@ -124,11 +139,12 @@ function LandingPage() {
              <h3>My Data</h3>
              <button className="bt-util" onClick={()=>setIsopen(true)}>Per Kg</button>
              <Popup trigger={isOpen} setTrigger={setIsopen}>
-               
-                 <input type="file" onChange={fileHandler}/>
-
-                
-             
+               <form onSubmit={formHandler}>
+                 <input type="file" />
+                    <button type="submit" onChange={fileHandler}>Upload</button>
+              
+                </form>
+                    <p>Uploaded {progress}%</p>
              </Popup>
                  
                  <button className="bt-util">Per Tonne</button>

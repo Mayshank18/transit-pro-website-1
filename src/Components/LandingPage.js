@@ -19,6 +19,7 @@ function LandingPage() {
         const [posts,setPosts]=useState([]);
         const [isOpen,setIsopen]=useState(false);
         const [progress,setProgress]=useState(0);
+        const [uploadPc,setUploadPc]=useState("none");
         const [userDetails,setUserDetails]=useState('');
     useEffect(() => {
         const getdatafromFirebase=[];
@@ -42,6 +43,7 @@ function LandingPage() {
         e.preventDefault();
         const file=e.target[0].files[0];
        fileHandler(file);
+       setUploadPc("block");
     }
     
      const fileHandler = (file)=>{
@@ -140,11 +142,13 @@ function LandingPage() {
              <button className="bt-util" onClick={()=>setIsopen(true)}>Per Kg</button>
              <Popup trigger={isOpen} setTrigger={setIsopen}>
                <form onSubmit={formHandler}>
-                 <input type="file" />
-                    <button type="submit" onChange={fileHandler}>Upload</button>
+            <a className="dwnld-link sub-button" href="https://firebasestorage.googleapis.com/v0/b/transit-pro-fdf25.appspot.com/o/files%2FTransit%20template%2FTransit%20Template.xlsx?alt=media&token=e9911270-ad1c-4083-b947-536b82bf899c">Download Template</a>
+                   
+                 <input type="file" style={{display:"block"}}/>
+                    <button type="submit" className="sub-button" onChange={fileHandler}>Upload</button>
               
                 </form>
-                    <p>Uploaded {progress}%</p>
+                    <p style={{display: uploadPc}}>Uploaded {progress}%</p>
              </Popup>
                  
                  <button className="bt-util">Per Tonne</button>

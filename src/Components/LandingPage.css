@@ -119,3 +119,15 @@ text-align: center;
   margin: 30vh auto;
   width: 50%;
 }
+.dwnld-link{
+  background-color: #F2C106;
+
+  text-decoration: none;
+  color: black;
+  border-radius: 0.5rem;
+  padding:4px 6px;
+  margin-right: 0.5rem;
+  margin-bottom: 2rem;
+
+
+}

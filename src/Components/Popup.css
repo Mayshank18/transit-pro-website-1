@@ -17,6 +17,8 @@
     width: 100%;
     max-width: 640px;
     background-color: #FFF;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 }
 
@@ -24,4 +26,8 @@
     position: absolute;
     top: 16px;
     right: 16px;
+}
+.close-btn{
+    background-color: white;
+    border: none;
 }

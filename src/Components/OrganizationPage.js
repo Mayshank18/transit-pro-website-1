@@ -90,7 +90,7 @@ export default function OrganizationPage() {
       })
       .then(() => {
         alert("Your details have been submitted👍");
-        history.push("/landing");
+        history.push("/otherdetails");
       
       })
       .catch((error) => {

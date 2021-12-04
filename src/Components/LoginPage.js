@@ -8,6 +8,7 @@ import "./LoginPage.css"
 import { db } from "../firebase";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Helmet } from "react-helmet";
 
 export default function LoginPage() {
   const emailRef = useRef();
@@ -78,8 +79,11 @@ export default function LoginPage() {
   }
 
   return (
+
     <div style={{backgroundColor:"#E5E5E5"}}>
-    
+    <Helmet>
+        <title>Transit Pro|Login </title>
+      </Helmet>
     <Header/>
   
     <div className="form-parent">

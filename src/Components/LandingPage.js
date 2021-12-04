@@ -11,6 +11,7 @@ import loadgif from "../images/load.gif"
 import Popup from './Popup';
 
 import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage';
+import { Helmet } from 'react-helmet';
 
 function LandingPage() {
   
@@ -81,6 +82,9 @@ function LandingPage() {
 
  
         <div style={{backgroundColor:"#E5E5E5"}}>
+            <Helmet>
+        <title>Transit Pro | Home</title>
+      </Helmet>
      <Navbar/>
 
      <div id="row" style={{ height:"100vh"}}>

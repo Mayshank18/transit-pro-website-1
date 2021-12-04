@@ -7,6 +7,7 @@ import "./OrganizationPage.css"
 import Header from "./Header";
 import Footer from "./Footer";
 import { Checkbox } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 
 const GSTDict={
@@ -173,6 +174,9 @@ export default function OrganizationPage() {
 
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
+      <Helmet>
+        <title>Transit Pro|Setup your Account</title>
+      </Helmet>
      <Header/>
     <div className="org-parent">
      

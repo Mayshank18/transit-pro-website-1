@@ -6,6 +6,7 @@ import { db } from "../firebase";
 import Header from "./Header";
 import "./SignupPage.css"
 import Footer from "./Footer";
+import { Helmet } from "react-helmet";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -87,6 +88,9 @@ export default function SignupPage() {
 
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
+      <Helmet>
+        <title>Transit Pro|Create a new Account</title>
+      </Helmet>
     <Header/>
     <div className="sign-parent">
      

@@ -8,6 +8,7 @@ import "./OtherDetails.css"
 import Header from "./Header";
 import Footer from "./Footer";
 import { Checkbox } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 
 export default function OtherDetails() {
@@ -77,6 +78,9 @@ export default function OtherDetails() {
 
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
+      <Helmet>
+        <title>Transit Pro|Setup your Account</title>
+      </Helmet>
      <Header/>
     <div className="org-parent">
      

@@ -9,6 +9,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Checkbox } from "react-bootstrap";
 import { GrEdit } from "react-icons/gr";
+import { Helmet } from "react-helmet";
 
 
 const GSTDict={
@@ -54,7 +55,8 @@ const codes=Object.keys(GSTDict);
 
 export default function EditDetails() {
   const companyRef = useRef();
-  const phonenumberRef = useRef();
+  
+  const phoneRef= useRef();
   const whatsappnumberRef = useRef();
   const addressRef = useRef();
   const GSTRef = useRef();
@@ -69,14 +71,7 @@ export default function EditDetails() {
   const [isChecked, setIsChecked] = useState(true);
   const [loading,setLoading]=useState(true);
   const [posts,setPosts]=useState([]);
- const [cf1,setCf1]=useState("block");
- const [cf2,setCf2]=useState("none");
- const [af1,setAf1]=useState("block");
- const [af2,setAf2]=useState("none");
- const [gf1,setGf1]=useState("block");
- const [gf2,setGf2]=useState("none");
- const [pf1,setPf1]=useState("block");
- const [pf2,setPf2]=useState("none");
+
 
 
   useEffect(() => {
@@ -106,7 +101,7 @@ async function handleSubmit(e){
     e.preventDefault();
     console.log("submitted "+addressRef.current.value+" "+GSTRef.current.value+" "+companyRef.current.value);
     validateCode();
-    console.log(companyRef.current.value+" "+phonenumberRef+" "+addressRef);
+    console.log(companyRef.current.value+" "+phoneRef+" "+addressRef);
     if(invalidGst){
       setError("Please provide valid Gst");
     }
@@ -114,16 +109,15 @@ async function handleSubmit(e){
     else{
     var docRef = db.collection("Org").doc(currentUser.email);
 
-    if(whatsappnumberRef.current.value=="")
-    {
+   
       return docRef.update({
-        Company: companyRef.current.value,
+        
        
         Address: addressRef.current.value,
-        GSTINArr: [GSTRef.current.value],
+       
          Person:personRef.current.value,
-        Whatsapp: "NA",  
-       INState: stateValue,
+     Phone:phoneRef.current.value
+     
         
       })
       .then(() => {
@@ -135,29 +129,8 @@ async function handleSubmit(e){
         alert(error.message);
         
       });
-    }
-    else
-    {
-    return docRef.update({
-      Company: companyRef.current.value,
-     
-      Address: addressRef.current.value,
-      GSTINArr: [GSTRef.current.value],
-       Person:personRef.current.value,
-      Whatsapp: whatsappnumberRef.current.value,  
-     INState: stateValue,
-      
-    })
-    .then(() => {
-      alert("Your details have been submitted👍");
-      history.push("/landing");
+   
     
-    })
-    .catch((error) => {
-      alert(error.message);
-      
-    });
-  }
  }//else
   }
 
@@ -212,42 +185,25 @@ async function handleSubmit(e){
 
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
+      <Helmet>
+        <title>Transit Pro | Edit Details</title>
+      </Helmet>
      <Header/>
     <div className="org-parent">
      
       <h2>Edit details</h2>
-      <form onSubmit={handleSubmit} noValidate className="org-form">
+      <form onSubmit={handleSubmit} noValidate className="org-form edit-form">
         {error && <Alert variant="danger">{error}</Alert>}
-        <strong>Logged in as:</strong> {currentUser.email}
-        <div >
-          <label htmlFor="company" >
-            Company Name
-          </label>
-
-           <div className="fieldGrid">
-            {
-                
+     
+        
+        {
                 posts.length>0?
-                (posts.map((post)=> <div>
-                    <input
-                type="text"
-                placeholder="Company Name"
-               
-                id="company1"
-                ref={companyRef}
-                required               
-                // style={{display: cf1}}               
-                defaultValue= {post.Company}/> 
-                {/* c2 */}
-                
-                </div> ) ):
-
-               <input type="text" placeholder="Company Name" />
+                (posts.map((post)=>  <p><strong>Logged in as: </strong>
+                    {post.Company}
+                  </p>) ):
+              <p> <strong>Logged in as: </strong>{currentUser.email}</p>
             }
-           <div className="icon-edit" ><GrEdit /></div>
-        </div>
-                {/* input field parent div end */}
-        </div>
+
         <div >
           <label htmlFor="address" >
             Address
@@ -265,16 +221,7 @@ async function handleSubmit(e){
             required               
             // style={{display: af1}}               
             defaultValue= {post.Address}/> 
-            {/* c2 */}
-            {/* <input
-            type="text"
-            placeholder=" Address"
-           
-            id="add2"
-          
-            required               
-            style={{display: af2}}               
-            />  */}
+            
 
             </div>) ):
                <input type="text" placeholder="Address" />
@@ -286,45 +233,33 @@ async function handleSubmit(e){
         </div>
         
         <div >
-          <label htmlFor="GSTIN " >
-            GSTIN
+          <label htmlFor="address" >
+            Phone
           </label>
-
-
           <div className="fieldGrid">
             {
                 posts.length>0?
                 (posts.map((post)=>  <div>
                 <input
-           type="text"
-           placeholder="GSTIN"
-           onChange={(e)=>{
-             setGst(e.target.value)
-           if(e.target.value.length!=15 ||e.target.value.charAt(13)!="Z")
-           {
-             setInvalidGst(true);
-             console.log(invalidGst);
-           }
-           }}
-           id="person"
-           ref={GSTRef}
-           defaultValue={post.GSTINArr[0]}
-           required
-         />
-         
+            type="text"
+            placeholder="Phone"
+           
+            id="add1"
+          ref={phoneRef}
+            required               
+            // style={{display: af1}}               
+            defaultValue= {post.Phone}/> 
+            
 
             </div>) ):
-               <input type="text" placeholder="Address" />
+               <input type="text" placeholder="Phone" />
             }
            <div className="icon-edit" ><GrEdit /></div>
         </div>
+         
+          
+        </div>
         
-         
-            
-         
-          <h5>{stateValue}</h5>
-          <button className="validateGST" type="button" onClick={validateCode}>Validate Gst</button>
-          </div>
 
         <div >
           <label >
@@ -338,7 +273,7 @@ async function handleSubmit(e){
                 <div>
                 <input
             type="text"
-            placeholder="Joa"
+            placeholder="Joan"
            
             id="person1"
          ref={personRef}
@@ -349,7 +284,7 @@ async function handleSubmit(e){
            
 
             </div>) ):
-               <input type="text" placeholder="GSTIN" />
+               <input type="text" placeholder="Person" />
             }
            <div className="icon-edit" ><GrEdit /></div>
         </div>
@@ -358,28 +293,8 @@ async function handleSubmit(e){
          
         
         </div>
-        <div className="check">
-          <label>Whatsapp on Primary Number</label>
-          <input type="checkbox"
-          checked={isChecked}
-          onChange={handleCheck}
-           />
-          
-        </div>
-        <div style={{display:dispWhatsapp}}>
-          <label htmlFor="whatsappnumber" >
-            Whatsapp Number
-          </label>
-          <input
-            type="number"
-            placeholder="Whatsapp Number"
-            
-            id="whatsappnumber"
-            ref={whatsappnumberRef}
-            
-         
-          />
-        </div>
+      
+        
         <div className="center">
         <button
           type="submit"

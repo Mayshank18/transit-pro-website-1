@@ -9,6 +9,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import loadgif from "../images/load.gif"
 import {GrAdd,GrEdit} from "react-icons/gr"
+import { Helmet } from 'react-helmet';
 function ProfileDashboard() {
  
     const [error, setError] = useState("");
@@ -72,6 +73,9 @@ function ProfileDashboard() {
 
     return (
         <div style={{backgroundColor:"#E5E5E5", alignItems:"center"}}>
+    <Helmet>
+        <title>Transit Pro | Profile Dashboard</title>
+      </Helmet>
     <Navbar/>
     <div className="profile">
         <div className="avatar">

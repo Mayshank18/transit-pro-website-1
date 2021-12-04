@@ -6,10 +6,13 @@ import "../App.css"
 import "./HomePage.css"
 import Hero from "../images/white.png"
 import truck from "../images/truck.png"
+import { Helmet } from "react-helmet";
 export default function HomePage() {
   return (
     <>
-      
+      <Helmet>
+        <title>Transit Pro</title>
+      </Helmet>
       <Header/>  
       <div className="divide">
       <div className='Heroleft'>

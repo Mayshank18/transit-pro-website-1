@@ -10,8 +10,9 @@ import truck from "../images/truck2.png"
 import loadgif from "../images/load.gif"
 import Popup from './Popup';
 
-import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage';
+import { getDownloadURL, listAll, ref, uploadBytesResumable } from '@firebase/storage';
 import { Helmet } from 'react-helmet';
+import { GrDownload } from 'react-icons/gr';
 
 function LandingPage() {
   
@@ -22,6 +23,8 @@ function LandingPage() {
         const [progress,setProgress]=useState(0);
         const [uploadPc,setUploadPc]=useState("none");
         const [userDetails,setUserDetails]=useState('');
+        const [files_name,setFiles_name]=useState([]);
+        const [files_url,setFiles_url]=useState([]);
     useEffect(() => {
         const getdatafromFirebase=[];
         const sub=db.collection("Org")
@@ -61,8 +64,9 @@ function LandingPage() {
    {
     alert("xlsx file uploaded")
       
-       fileHandler(file);
-       setUploadPc("block");
+    //    fileHandler(file);
+    //    setUploadPc("block");
+     
    }
     }
     
@@ -82,6 +86,46 @@ function LandingPage() {
         
            
     };
+
+    async function fetchFiles(){
+        console.log("fetch")
+        const listRef = ref(storage, `files/${userDetails.Company}`);
+
+// Find all the prefixes and items.
+listAll(listRef)
+  .then((res) => {
+   if(res)
+   {
+    
+    res.items.forEach((itemRef) => {
+    
+    console.log("items from storage "+itemRef.name);
+
+   setFiles_name (files_name.push(itemRef.name));
+   console.log("ins "+files_name);
+// getDownloadURL(itemRef).then((url)=>{
+//     files_url.push(url);
+//    })
+  
+      
+    });
+}   //if res>0
+else{
+
+   
+    console.log("No files present");
+    
+}
+  }).catch((error) => {
+
+    console.log("Error occured"+error);
+  });
+// console.log("names: "+files_name);
+    }
+    function fileClick(){
+       // console.log(files_name);
+       // console.log(files_url);
+    }
 
     if (loading)
     {
@@ -174,6 +218,15 @@ function LandingPage() {
               
                 </form>
                     <p style={{display: uploadPc}}>Uploaded {progress}%</p>
+
+                    <button className="sub-button" onClick={fetchFiles}>Fetch previously uploaded files</button>
+               
+                        {/* {
+                            console.log("names: "+files_name)
+                        } */}
+                        
+                          
+               
              </Popup>
              
                  

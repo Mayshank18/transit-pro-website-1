@@ -43,8 +43,27 @@ function LandingPage() {
     function formHandler(e){
         e.preventDefault();
         const file=e.target[0].files[0];
+     
+
+        var fileInput = 
+        document.getElementById('file1');
+        var filePath = fileInput.value;
+
+         // Allowing file type
+         var allowedExtensions = 
+         /(\.xlsx)$/i;
+   
+ if (!allowedExtensions.exec(filePath)) {
+     alert('Please upload files only in .xlsx format');
+   
+ }
+   else
+   {
+    alert("xlsx file uploaded")
+      
        fileHandler(file);
        setUploadPc("block");
+   }
     }
     
      const fileHandler = (file)=>{
@@ -144,16 +163,19 @@ function LandingPage() {
              <div className="data">
              <h3>My Data</h3>
              <button className="bt-util" onClick={()=>setIsopen(true)}>Per Kg</button>
+
+
              <Popup trigger={isOpen} setTrigger={setIsopen}>
                <form className="pop-form" onSubmit={formHandler}>
             <a className="dwnld-link sub-button" href="https://firebasestorage.googleapis.com/v0/b/transit-pro-fdf25.appspot.com/o/files%2FTransit%20template%2FTransit%20Template.xlsx?alt=media&token=e9911270-ad1c-4083-b947-536b82bf899c">Download Template</a>
                    
-                 <input type="file" style={{display:"block"}}/>
+                 <input type="file" id="file1" style={{display:"block"}}/>
                     <button type="submit" className="sub-button" onChange={fileHandler}>Upload</button>
               
                 </form>
                     <p style={{display: uploadPc}}>Uploaded {progress}%</p>
              </Popup>
+             
                  
                  <button className="bt-util"onClick={()=>setIsopen(true)}>Per Tonne</button>
                  

@@ -66,7 +66,7 @@ function LandingPage() {
      
 
         var fileInput = 
-        document.getElementById('file1');
+        document.getElementById('file-inp');
         var filePath = fileInput.value;
 
          // Allowing file type
@@ -374,8 +374,15 @@ else{
                   
                 <div >
                     <h5>Last Uploaded File</h5>
-                    <button onClick={fetchFilesKg} className="sub-btn btn-rfrsh" type="button"><GrRefresh/></button>
-                        <a href={lastFileUrlKg} className="last-upld">Download File<FaFileDownload className="ico-dwnld"/></a>
+                    <button onClick={(e)=>{fetchFilesKg();
+                    e.preventDefault();
+                    } }className="sub-btn btn-rfrsh" type="button"><GrRefresh/></button>
+                    {
+                        (lastFileKg=="")?
+                        <span href={lastFileUrlKg} className="last-upld">File Not Found<FaFileDownload className="ico-dwnld"/></span>
+                        :<a href={lastFileUrlKg} className="last-upld">Download File: {lastFileKg}<FaFileDownload className="ico-dwnld"/></a>
+                    }
+                        
                   
                   
                 </div>
@@ -404,9 +411,14 @@ else{
          
                 <div >
                     <h5>Last Uploaded File</h5>
-                    <button onClick={fetchFilesTonne} className="sub-btn btn-rfrsh" type="button"><GrRefresh/></button>
-                        <a href={lastFileUrlTn} className="last-upld">Download File<FaFileDownload className="ico-dwnld"/></a>
-                  
+                    <button onClick={(e)=>{fetchFilesTonne();
+                    e.preventDefault();
+                    } }className="sub-btn btn-rfrsh" type="button"><GrRefresh/></button>
+                            {
+                        (lastFileTn=="")?
+                        <span href={lastFileUrlTn} className="last-upld">File Not Found<FaFileDownload className="ico-dwnld"/></span>
+                        :<a href={lastFileUrlTn} className="last-upld">Download File: {lastFileTn}<FaFileDownload className="ico-dwnld"/></a>
+                    }
                   
                 </div>
                         

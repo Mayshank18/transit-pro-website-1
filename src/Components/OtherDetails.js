@@ -17,15 +17,13 @@ export default function OtherDetails() {
   const expRef=useRef("")
     const sect=useRef("");
     const serv=useRef("");
-  const personRef=useRef();
+const [others,setOthers]=useState("none");
   const [error, setError] = useState("");
-  const [stateValue,setStatevalue]=useState("");
-  const [Gst,setGst]=useState("");
+
+
   const { currentUser, logout } = useAuth();
   const history = useHistory();
-  const [invalidGst,setInvalidGst]=useState(true);
-  const [dispWhatsapp,setdispWhatsapp]=useState("none");
-  const [isChecked, setIsChecked] = useState(true);
+
   async function handleSubmit(e){
     e.preventDefault();
  
@@ -70,8 +68,13 @@ export default function OtherDetails() {
     }
   }
  
-  function handleRevenue(e){
-      console.log(e.target.value);
+  function otherSpecify(e){
+      console.log("sector value:"+e.target.value);
+      if(e.target.value==="Others")
+      setOthers("block");
+
+      else
+      setOthers("none")
   }
   
 
@@ -129,13 +132,20 @@ export default function OtherDetails() {
             <label >Primary Sector</label>
             <select
           className="rev-select"
-          
+          onChange={otherSpecify}
           ref={sect}>
                 <option value="">Choose..</option>
               <option value="FMCG">FMCG</option>
               <option value="E-Commerce">E-Commerce</option>
               <option value="Manufacturing">Manufacturing</option>
-              </select>
+              <option value="Others">Others</option>
+               </select>
+               
+              <input type="text" 
+                  placeholder="Please Specify"
+                  ref={sect}
+                  style={{display:others}}
+             />
         </div>
         <div>
             <label > Service Type</label>

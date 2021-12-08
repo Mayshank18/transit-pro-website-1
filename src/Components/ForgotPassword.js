@@ -25,7 +25,7 @@ export default function ForgotPassword() {
         if (cancel) return;
         setLoading(false);
       });
-      setMessage("Check your inbox for further instructions");
+      alert("Check your mail inbox for further instructions");
       history.push("/login");
     } catch (err) {
       setError(err.message);

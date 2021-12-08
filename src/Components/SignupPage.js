@@ -7,7 +7,7 @@ import Header from "./Header";
 import "./SignupPage.css"
 import Footer from "./Footer";
 import { Helmet } from "react-helmet";
-
+ 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -16,6 +16,8 @@ export default function SignupPage() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [validPhone, setValidPhone] = useState(false);
+  const [validPass, setValidPass] = useState(false);
   const history = useHistory();
 
   async function handleSubmit(e) {
@@ -25,6 +27,14 @@ export default function SignupPage() {
 
     if (newpassword !== confirmpassword) {
       return setError("Passwords do not match");
+    }
+    if(!validPhone)
+    {
+      return setError("Invalid Phone Number");
+    }
+    if(!validPass)
+    {
+      return setError("Password should be atleast greater than 6 Characters.");
     }
     let cancel = false;
     try {
@@ -86,6 +96,24 @@ export default function SignupPage() {
     return cancel;
   }
 
+  function validatePhone(e){
+
+   var num= e.target.value;
+   if(num.length==10)
+   setValidPhone(true);
+
+  }
+
+  function validatePassword(e){
+    var pass=e.target.value;
+    if(pass.length>=6)
+    setValidPass(true)
+
+    else
+    setValidPass(false)
+
+  }
+
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
       <Helmet>
@@ -108,7 +136,10 @@ export default function SignupPage() {
             
             id="contact"
             value={contact}
-            onChange={(e) => setContact(e.target.value)}
+            onChange={(e) => {
+              setContact(e.target.value);
+              validatePhone(e);
+            }}
             //ref={contactRef}
             required
           />
@@ -130,7 +161,7 @@ export default function SignupPage() {
         </div>
         <div >
           <label htmlFor="newpassword" >
-            New Password
+            Setup Password
           </label>
           <input
             type="password"
@@ -139,7 +170,9 @@ export default function SignupPage() {
             id="newpassword"
             //ref={newpasswordRef}
             value={newpassword}
-            onChange={(e) => setNewpassword(e.target.value)}
+            onChange={(e) => {setNewpassword(e.target.value)
+            validatePassword(e);
+            }}
             required
           />
         </div>

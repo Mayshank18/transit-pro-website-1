@@ -4,7 +4,8 @@ import "./footer.css";
 export default function Footer() {
   return (
     <div className="foot">
-    <p className="foot-p"> Transitpro 2021 Copyright.</p>
+    <p className="foot-p"> Transitpro 2021 Copyright ©</p>
   </div>
   );
 }
+ 

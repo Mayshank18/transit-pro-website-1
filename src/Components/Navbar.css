@@ -16,14 +16,14 @@
 background-color: var(--primary-color);
 /* text-align: center; */
     }
-.navigation
+.navigation 
 {
 color: var(--secondary-color);
 background-color: var(--primary-color);
 margin-left: auto;
 margin-right: auto;
 width:90%;
-padding-top: 2rem;
+padding-top: 1rem;
 padding-bottom: 0.5rem;
 
 

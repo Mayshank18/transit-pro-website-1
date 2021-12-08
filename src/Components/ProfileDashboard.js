@@ -9,6 +9,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import loadgif from "../images/load.gif"
 import {GrAdd,GrEdit} from "react-icons/gr"
+import {BsFillPersonFill} from "react-icons/bs"
 import { Helmet } from 'react-helmet';
 function ProfileDashboard() {
  
@@ -95,11 +96,21 @@ function ProfileDashboard() {
         {/* columns */}
         <div id="row" style={{ height:"100vh"}}>
          <div className="column  ">
-            <h6 className="ftl-ptl">FTL/PTL</h6>
+         {
+                posts.length>0?
+                (posts.map((post)=><h6 key={post.key} >
+                    
+                       {post.Service}
+                    
+                    </h6>) ):
+               <h6 className="ftl-ptl">FTL/PTL</h6>
+            }
+         
              </div>
 
              <div className="column  contact-person">
-                 <h6>Person of Contact</h6>
+                 {/* <h6>Person of Contact</h6> */}
+                 <BsFillPersonFill style={{fontSize:"50px"}}/>
                  {
                 posts.length>0?
                 (posts.map((post)=><h6 key={post.key} >
@@ -113,9 +124,26 @@ function ProfileDashboard() {
 
              <div className="column  past-work">
                 <ul>
-                 <li>Sector</li>
-                 <li>{GrAdd}Company 1</li>
-                 <li>Company 2</li>
+                {
+                posts.length>0?
+                (posts.map((post)=><li key={post.key} >
+                    
+                       {post.Sector}
+                    
+                    </li>) ):
+                <li>Sector</li>
+            }
+                  {
+                posts.length>0?
+                (posts.map((post)=><li key={post.key} >
+                    
+                       {post.Exp_Companies}
+                    
+                    </li>) ):
+               <li>{GrAdd}Company </li>
+            }
+                
+            
                  </ul>
              </div>
 
@@ -140,6 +168,8 @@ function ProfileDashboard() {
                     <h4>Person of Contact: {post.Person}</h4>
                     <h4>State of Business: {post.INState}</h4>
                     <h4>GSTIN: {post.GSTINArr}</h4>
+                    <h4>Revenue: {post.Revenue}</h4>
+                    <h4>Trucks: {post.Trucks}</h4>
                     <h4>Email: {post.Email}</h4>
                     <h4>Phone: {post.Phone}</h4>
                     {(post.Whatsapp=="NA")?<h4>Whatsapp: {post.Phone}</h4>:<h4>Whatsapp: {post.Whatsapp}</h4>}

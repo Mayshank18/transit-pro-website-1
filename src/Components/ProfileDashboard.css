@@ -46,12 +46,13 @@
     padding: 1rem;
 }
 .contact-person h6{
-    margin: 1rem auto;
-    padding: 0.5rem;
-    background-color: #284f6f;
-    width: 40%;
+    margin: 2px auto;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    font-size: larger;
+    width: fit-content;
     border-radius: 0.5rem;
-    color: white;
+    color: #284f6f;
 }
 .past-work li{
 

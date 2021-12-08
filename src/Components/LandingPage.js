@@ -22,6 +22,7 @@ function LandingPage() {
         const [isOpen,setIsopen]=useState(false);
         const [progress,setProgress]=useState(0);
         const [uploadPc,setUploadPc]=useState("none");
+        const [lastFile,setLastFile]=useState("none");
         const [userDetails,setUserDetails]=useState('');
         const [files_name,setFiles_name]=useState([]);
         const [files_url,setFiles_url]=useState([]);
@@ -62,10 +63,12 @@ function LandingPage() {
  }
    else
    {
-    alert("xlsx file uploaded")
+    // alert("file uploaded")
       
-    //    fileHandler(file);
-    //    setUploadPc("block");
+      fileHandler(file);
+        setUploadPc("block");
+        fetchFiles();
+        setLastFile("block");
      
    }
     }
@@ -79,8 +82,8 @@ function LandingPage() {
             setProgress(prog);
             },(err)=>console.log(err),
             ()=>{
-                getDownloadURL(uploadTask.snapshot.ref)
-                .then((url)=>console.log(url));
+                // getDownloadURL(uploadTask.snapshot.ref)
+                // .then((url)=>console.log(url));
             }
             );
         
@@ -103,9 +106,9 @@ listAll(listRef)
 
    setFiles_name (files_name.push(itemRef.name));
    console.log("ins "+files_name);
-// getDownloadURL(itemRef).then((url)=>{
-//     files_url.push(url);
-//    })
+getDownloadURL(itemRef).then((url)=>{
+    files_url.push(url);
+   })
   
       
     });
@@ -122,10 +125,7 @@ else{
   });
 // console.log("names: "+files_name);
     }
-    function fileClick(){
-       // console.log(files_name);
-       // console.log(files_url);
-    }
+ 
 
     if (loading)
     {
@@ -214,16 +214,14 @@ else{
             <a className="dwnld-link sub-button" href="https://firebasestorage.googleapis.com/v0/b/transit-pro-fdf25.appspot.com/o/files%2FTransit%20template%2FTransit%20Template.xlsx?alt=media&token=e9911270-ad1c-4083-b947-536b82bf899c">Download Template</a>
                    
                  <input type="file" id="file1" style={{display:"block"}}/>
-                    <button type="submit" className="sub-button" onChange={fileHandler}>Upload</button>
+                    <button type="submit" className="sub-button" >Upload</button>
               
                 </form>
                     <p style={{display: uploadPc}}>Uploaded {progress}%</p>
 
-                    <button className="sub-button" onClick={fetchFiles}>Fetch previously uploaded files</button>
-               
-                        {/* {
-                            console.log("names: "+files_name)
-                        } */}
+                <div style={{display: lastFile}}>
+                    <p>last file uploaded</p>
+                </div>
                         
                           
                

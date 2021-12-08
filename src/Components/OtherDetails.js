@@ -147,7 +147,7 @@ export default function OtherDetails() {
                 <option value="">Choose..</option>
               <option value="FTL">FTL</option>
               <option value="PTL">PTL</option>
-              <option value="Both">Both</option>
+              <option value="FTL/PTL">Both</option>
               </select>
         </div>
         

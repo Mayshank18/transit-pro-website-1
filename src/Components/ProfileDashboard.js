@@ -98,7 +98,7 @@ function ProfileDashboard() {
          <div className="column  ">
          {
                 posts.length>0?
-                (posts.map((post)=><h6 key={post.key} >
+                (posts.map((post)=><h6 key={post.key} className="ftl-ptl" >
                     
                        {post.Service}
                     

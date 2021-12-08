@@ -13,9 +13,10 @@
 }
 .popup-inner{
     position: relative;
-    padding: 4rem;
+    padding: 2rem;
     width: 100%;
-    max-width: 640px;
+    max-width: 940px;
+    max-height: fit-content;
     background-color: #FFF;
     border-radius: 0.5rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

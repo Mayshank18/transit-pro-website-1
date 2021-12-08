@@ -119,15 +119,19 @@ text-align: center;
   margin: 30vh auto;
   width: 50%;
 }
-.dwnld-link{
+.sub-btn{
   background-color: #F2C106;
 
   text-decoration: none;
   color: black;
+  border: none;
   border-radius: 0.5rem;
-  padding:4px 6px;
-  margin-right: 0.5rem;
-  margin-bottom: 2rem;
+ width: fit-content;
+ height: fit-content;
+ padding: 1rem;
+ margin: 1rem auto;
+ 
+
 
 
 }
@@ -138,4 +142,28 @@ text-align: center;
 }
 .pop-form input{
   margin: 2rem auto;
+}
+
+#row-pop{
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  width: 100%;
+}
+.ico-pop{
+  font-size: 80px;
+  margin: 0.5rem auto;
+  color: #284f6f;
+}
+.last-upld{
+  margin: 1rem ;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #284f6f;
+}
+.btn-rfrsh{
+  margin: 1rem;
+}
+.ico-dwnld{
+  margin: 0.5rem;
 }

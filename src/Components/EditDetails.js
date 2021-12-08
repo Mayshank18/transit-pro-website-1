@@ -62,8 +62,12 @@ export default function EditDetails() {
 
   const personRef=useRef();
   const [error, setError] = useState("");
-  const [stateValue,setStatevalue]=useState("");
-  const [Gst,setGst]=useState("");
+  const wapRef=useRef();
+  const compRef=useRef();
+  const revRef=useRef();
+  const truRef=useRef();
+  const sect=useRef();
+  const serv=useRef();
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [invalidGst,setInvalidGst]=useState(true);
@@ -71,6 +75,8 @@ export default function EditDetails() {
   const [isChecked, setIsChecked] = useState(true);
   const [loading,setLoading]=useState(true);
   const [posts,setPosts]=useState([]);
+  const [others,setOthers]=useState("none");
+
 
 
 
@@ -143,42 +149,15 @@ async function handleSubmit(e){
       setError(err.message);
     }
   }
-  function validateCode(){
-    //console.log(Gst);
-   
-    if(Gst.length==15 && Gst.charAt(13)=="Z")
-    {
-      //check state
-      var state=Gst.substring(0,2);
-      if(state in GSTDict){
-        setStatevalue(GSTDict[state]);
-        console.log(" valid Gst");
-        setInvalidGst(false);
-      }
-      else{
-        console.log("invalid state");
-        setStatevalue("Invalid State code");
-      }
-     
-      //valid length and checksum
-    }
-    else{
-      //invalid length or Z missing
-      console.log("invalid length");
-      setStatevalue("Invalid GST");
-      
-    }
-  }
-  function handleCheck(){
-    setIsChecked(!isChecked);
-    if(isChecked)
-    {
-      setdispWhatsapp("block");
-    }
-    else{
-      setdispWhatsapp("none");
-    }
-  }
+  function otherSpecify(e){
+    console.log("sector value:"+e.target.value);
+    if(e.target.value==="Others")
+    setOthers("block");
+
+    else
+    setOthers("none")
+}
+  
 
 
   return (
@@ -257,7 +236,35 @@ async function handleSubmit(e){
          
           
         </div>
-        
+        {/* wap */}
+        <div >
+          <label >
+         Whatsapp Number
+          </label>
+
+          <div className="fieldGrid">
+            {
+                posts.length>0?
+                (posts.map((post)=>  
+                <div>
+                <input
+            type="text"
+            placeholder="Joan"
+           
+            id="person1"
+         ref={wapRef}
+            required               
+                          
+            defaultValue= {post.Whatsapp}/> 
+            {/* c2 */}
+           
+
+            </div>) ):
+               <input type="text" placeholder="9123555091" />
+            }
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+        </div>
 
         <div >
           <label >
@@ -286,12 +293,122 @@ async function handleSubmit(e){
             }
            <div className="icon-edit" ><GrEdit /></div>
         </div>
-
-
-         
-        
         </div>
-      
+        {/* companies */}
+        <div >
+          <label >
+           Companies Associated
+          </label>
+
+          <div className="fieldGrid">
+            {
+                posts.length>0?
+                (posts.map((post)=>  
+                <div>
+                <input
+            type="text"
+            placeholder="Joan"
+           
+            id="person1"
+         ref={compRef}
+            required               
+                          
+            defaultValue= {post.Exp_Companies}/> 
+            {/* c2 */}
+           
+
+            </div>) ):
+               <input type="text" placeholder="TATA,JSW" />
+            }
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+        </div>
+        {/* Trucks */}
+        <div >
+          <label >
+          Vehicles
+          </label>
+
+          <div className="fieldGrid">
+            {
+                posts.length>0?
+                (posts.map((post)=>  
+                <div>
+                <input
+            type="text"
+            placeholder="Joan"
+           
+            id="person1"
+         ref={truRef}
+            required               
+                          
+            defaultValue= {post.Trucks}/> 
+            {/* c2 */}
+           
+
+            </div>) ):
+               <input type="text" placeholder="Person" />
+            }
+           <div className="icon-edit" ><GrEdit /></div>
+        </div>
+        </div>
+        {/* Revenue */}
+        <div>
+          <label>
+            Revenue:
+          </label>
+            
+          <select
+          className="rev-select"
+          
+          ref={revRef}>
+              <option value="">Choose..</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3+">3+</option>
+              </select>
+        </div>
+    
+           {/* sect,serv */}
+           <div>
+            <label >Primary Sector</label>
+           
+            <select
+          className="rev-select"
+          onChange={otherSpecify}
+          ref={sect} >
+                <option value="">Choose..</option>
+              <option value="FMCG">FMCG</option>
+              <option value="E-Commerce">E-Commerce</option>
+              <option value="Manufacturing">Manufacturing</option>
+              <option value="Others">Others</option>
+               </select>
+               
+              <input type="text" 
+                  placeholder="Please Specify"
+                  ref={sect}
+                  style={{display:others}}
+             />
+             
+           
+        </div>
+        <div>
+            <label > Service Type</label>
+            <select
+            
+          className="rev-select"
+    
+          ref={serv}>
+                <option value="">Choose..</option>
+              <option value="FTL">FTL</option>
+              <option value="PTL">PTL</option>
+              <option value="FTL/PTL">Both</option>
+              </select>
+        </div>
+        
+        
+
+    
         
         <div className="center">
         <button

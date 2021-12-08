@@ -12,7 +12,7 @@ import {GrAdd,GrEdit} from "react-icons/gr"
 import {BsFillPersonFill} from "react-icons/bs"
 import { Helmet } from 'react-helmet';
 function ProfileDashboard() {
- 
+  
     const [error, setError] = useState("");
     const { currentUser, logout } = useAuth();
         const [loading,setLoading]=useState(true);
@@ -163,16 +163,16 @@ function ProfileDashboard() {
                 posts.length>0?
                 (posts.map((post)=><div key={post.key} className="detailsList">
                     
-                    <h4>Company:   {post.Company}</h4>
-                    <h4>Address: {post.Address}</h4>
-                    <h4>Person of Contact: {post.Person}</h4>
-                    <h4>State of Business: {post.INState}</h4>
+                    <h4>Company:  <span> {post.Company}</span></h4>
+                    <h4>Address: <span>{post.Address}</span></h4>
+                    <h4>Person of Contact: <span>{post.Person}</span></h4>
+                    <h4>State of Business: <span>{post.INState}</span></h4>
                     <h4>GSTIN: {post.GSTINArr}</h4>
-                    <h4>Revenue: {post.Revenue}</h4>
-                    <h4>Trucks: {post.Trucks}</h4>
-                    <h4>Email: {post.Email}</h4>
-                    <h4>Phone: {post.Phone}</h4>
-                    {(post.Whatsapp=="NA")?<h4>Whatsapp: {post.Phone}</h4>:<h4>Whatsapp: {post.Whatsapp}</h4>}
+                    <h4>Revenue: <span>{post.Revenue}</span></h4>
+                    <h4>Trucks: <span>{post.Trucks}</span></h4>
+                    <h4>Email: <span>{post.Email}</span></h4>
+                    <h4>Phone: <span>{post.Phone}</span></h4>
+                    {(post.Whatsapp=="NA")?<h4>Whatsapp: <span>{post.Phone}</span></h4>:<h4>Whatsapp: <span>{post.Whatsapp}</span></h4>}
                    
 
                    

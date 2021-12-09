@@ -175,7 +175,7 @@ export default function OrganizationPage() {
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
       <Helmet>
-        <title>Transit Pro|Setup your Account</title>
+        <title>Transit Pro | Setup your Account</title>
       </Helmet>
      <Header/>
     <div className="org-parent">

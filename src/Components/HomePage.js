@@ -27,7 +27,7 @@ export default function HomePage() {
       }).catch(err=>console.log("Error: "+err));
 
      //emailjs.send("service_tnyby6u","template_gl3mqfy",e.target,'user_GLD89axVW2xbsmYDgI3JY');
-    
+     window.location.reload();
       alert("Query submitted successfully");
 
   }
@@ -42,7 +42,7 @@ export default function HomePage() {
       <div className='Heroleft'>
         <h1 className="hero-H">Businesses grow with</h1>
     <img src={Hero} alt="Transit Pro" className="banner" />
-    <p>This is a platform where your Logistic Companies finds their Future Businesses. </p>
+    <p>This is a platform where your Logistic Companies find their Future Businesses. </p>
         <Homebutton/>
         
         <img src={truck} alt="Truck" className="truck-gr"/>
@@ -65,7 +65,7 @@ export default function HomePage() {
     <label >Query</label>
    <textarea name="Message" name="query" ref={queryRef}/>
 
-      <button type="submit">Submit</button>
+      <button type="submit ">Submit</button>
         </form>
 
       </div>

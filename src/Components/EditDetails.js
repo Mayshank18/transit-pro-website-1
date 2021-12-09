@@ -120,7 +120,12 @@ async function handleSubmit(e){
         Address: addressRef.current.value,
        
          Person:personRef.current.value,
-     Phone:phoneRef.current.value
+     Phone:phoneRef.current.value,
+     Exp_Companies:compRef.current.value,
+     Revenue:revRef.current.value,
+     Sector:sect.current.value,
+     Service:serv.current.value,
+     Trucks:truRef.current.value
      
         
       })
@@ -357,32 +362,43 @@ async function handleSubmit(e){
           <label>
             Revenue:
           </label>
-            
+          {
+                posts.length>0?
+                (posts.map((post)=> 
+                
           <select
           className="rev-select"
-          
+          defaultValue={post.Revenue}
           ref={revRef}>
               <option value="">Choose..</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3+">3+</option>
-              </select>
+              </select>)):""
+}
+
+              
         </div>
     
            {/* sect,serv */}
            <div>
             <label >Primary Sector</label>
-           
+            {
+                posts.length>0?
+                (posts.map((post)=> 
+                
             <select
           className="rev-select"
           onChange={otherSpecify}
+          defaultValue={post.Sector}
           ref={sect} >
                 <option value="">Choose..</option>
               <option value="FMCG">FMCG</option>
               <option value="E-Commerce">E-Commerce</option>
               <option value="Manufacturing">Manufacturing</option>
               <option value="Others">Others</option>
-               </select>
+               </select>)):""
+}
                
               <input type="text" 
                   placeholder="Please Specify"
@@ -394,16 +410,21 @@ async function handleSubmit(e){
         </div>
         <div>
             <label > Service Type</label>
+            {
+                posts.length>0?
+                (posts.map((post)=> 
+                
             <select
             
           className="rev-select"
-    
+              defaultValue={post.Service}
           ref={serv}>
                 <option value="">Choose..</option>
               <option value="FTL">FTL</option>
               <option value="PTL">PTL</option>
               <option value="FTL/PTL">Both</option>
-              </select>
+              </select>)):""
+}
         </div>
         
         

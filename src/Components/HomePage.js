@@ -1,4 +1,5 @@
 import React from "react";
+import emailjs from "emailjs-com"
 import Homebutton from "./Homebutton";
 import Header from "./Header";
 import Footer from "./Footer"
@@ -7,7 +8,30 @@ import "./HomePage.css"
 import Hero from "../images/hero.PNG"
 import truck from "../images/truck.png"
 import { Helmet } from "react-helmet";
+import { useRef } from "react";
 export default function HomePage() {
+
+  const emailRef=useRef();
+  const nameRef=useRef();
+  const queryRef=useRef();
+  function sendEmail(e){
+    e.preventDefault();
+
+    emailjs.send("service_tnyby6u","template_gl3mqfy",{
+      name: nameRef.current.value,
+      user_email: emailRef.current.value,
+      query: queryRef.current.value,
+      },'user_GLD89axVW2xbsmYDgI3JY') 
+      .then(res=>{
+        console.log(res);
+      }).catch(err=>console.log("Error: "+err));
+
+     //emailjs.send("service_tnyby6u","template_gl3mqfy",e.target,'user_GLD89axVW2xbsmYDgI3JY');
+    
+      alert("Query submitted successfully");
+
+  }
+
   return (
     <>
       <Helmet>
@@ -28,14 +52,18 @@ export default function HomePage() {
       <div className="HeroRight">
 
         <h1>Contact Us</h1>
-        <form onSubmit="">
-    <label htmlFor="email">
+        <form onSubmit={sendEmail}>
+        <label >
+      Name
+    </label>
+    <input type="text" ref={nameRef} placeholder="Joe Mason"/>
+    <label >
       Email
     </label>
-    <input type="text" placeholder="joe@transitpro.com"/>
+    <input type="text" ref={emailRef} placeholder="joe@transitpro.com"/>
 
-    <label htmlFor="query">Query</label>
-   <textarea name="Message"/>
+    <label >Query</label>
+   <textarea name="Message" name="query" ref={queryRef}/>
 
       <button type="submit">Submit</button>
         </form>

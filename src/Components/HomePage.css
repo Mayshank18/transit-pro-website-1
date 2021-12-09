@@ -60,6 +60,7 @@ color: #0880A6;
     border-radius: 0.5rem;
     margin: 3rem auto;
    padding-bottom: 2rem;
+   margin-top: 2rem;
    }
    .HeroRight *{
        display: block;
@@ -72,6 +73,7 @@ color: #0880A6;
    .HeroRight form{
        width: 80%;
        margin: 1rem auto;
+       
    }
    .HeroRight label{
        margin-top: 1rem;

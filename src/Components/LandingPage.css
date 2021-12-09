@@ -149,6 +149,11 @@ text-align: center;
   grid-template-columns: 25% 50% 25%;
   width: 100%;
 }
+#row-pop-inner{
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  width: 100%;
+}
 .ico-pop{
   font-size: 80px;
   margin: 0.5rem auto;
@@ -166,4 +171,10 @@ text-align: center;
 }
 .ico-dwnld{
   margin: 0.5rem;
+}
+#file-inp{
+  width: 100%;
+ margin: auto;
+ background-color: rgb(241, 241, 241);
+ 
 }

@@ -100,7 +100,7 @@ function LandingPage() {
          var day=d.getDate();
          var month=d.getMonth();
          var yr=d.getFullYear();
-         const filetime=time+""+day+""+month+""+yr;
+         const filetime=time+""+day+""+month+""+yr+".xlsx";
         
          console.log(filetime);
           const storageRef=ref(storage, `/files/${userDetails.Company}/perKg/${filetime}`)
@@ -135,13 +135,15 @@ listAll(listRef)
     
     console.log("items from storage "+itemRef.name);
    
-   setLastFileKg(itemRef.name);
+  
      //console.log("last file "+lastFile);
 
 
    //console.log("ins "+files_name);
 getDownloadURL(itemRef).then((url)=>{
    setLastFileUrlKg(url);
+   setLastFileKg(itemRef.name);
+  
    })
   
     //   f=1;
@@ -159,6 +161,8 @@ else{
 
     console.log("Error occured"+error);
   });
+
+
 
     }
     
@@ -205,7 +209,7 @@ else{
          var day=d.getDate();
          var month=d.getMonth();
          var yr=d.getFullYear();
-         const filetime=time+""+day+""+month+""+yr;
+         const filetime=time+""+day+""+month+""+yr+".xlsx";
         
          console.log(filetime);
           const storageRef=ref(storage, `/files/${userDetails.Company}/perTonne/${filetime}`)
@@ -236,19 +240,17 @@ listAll(listRef)
     res.items.forEach((itemRef) => {
         // if (f===0) {
             
-       
-    
-    console.log("items from storage "+itemRef.name);
    
-   setLastFileTn(itemRef.name);
-     //console.log("last file "+lastFile);
-
-
-   //console.log("ins "+files_name);
 getDownloadURL(itemRef).then((url)=>{
    setLastFileUrlTn(url);
+   setLastFileTn(itemRef.name);
    })
-  
+
+   
+
+console.log("last file set "+itemRef.name);
+
+
     //   f=1;
     // }
 }
@@ -360,8 +362,9 @@ else{
                <form className="pop-form" onSubmit={formHandlerKg}>
                    <div id="row-pop">
             <a className="sub-btn" href="https://firebasestorage.googleapis.com/v0/b/transit-pro-fdf25.appspot.com/o/files%2FTransit%20template%2FTransit%20TemplateKg.xlsx?alt=media&token=fa2f1606-6ede-49d9-b585-23f3647486a8">Download Template</a>
-                   <div id="row-pop"><GoArrowRight className="ico-pop"/>
-                 <input type="file" id="file-inp" style={{display:"block"}}/>
+                   <div id="row-pop-inner"><GoArrowRight className="ico-pop"/>
+                
+                     <input type="file" id="file-inp" />
                  <GoArrowRight className="ico-pop"/>
                  </div>
                     <button type="submit" className="sub-btn " >Upload</button>
@@ -376,6 +379,7 @@ else{
                     <h5>Last Uploaded File</h5>
                     <button onClick={(e)=>{fetchFilesKg();
                     e.preventDefault();
+                    
                     } }className="sub-btn btn-rfrsh" type="button"><GrRefresh/></button>
                     {
                         (lastFileKg=="")?

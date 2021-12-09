@@ -176,5 +176,11 @@ text-align: center;
   width: 100%;
  margin: auto;
  background-color: rgb(241, 241, 241);
+ margin-left: 2.5%;
  
+}
+.sub-btn:hover{
+  background-color: #0880A6;
+color: white;
+transition: all 0.2s ease-in-out;
 }

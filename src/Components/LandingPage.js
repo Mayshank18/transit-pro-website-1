@@ -127,28 +127,19 @@ listAll(listRef)
   .then((res) => {
    if(res)
    {
-    var f=0;
-    res.items.forEach((itemRef) => {
-        // if (f===0) {
-            
-       
-    
-    console.log("items from storage "+itemRef.name);
-   
-  
-     //console.log("last file "+lastFile);
-
-
-   //console.log("ins "+files_name);
-getDownloadURL(itemRef).then((url)=>{
-   setLastFileUrlKg(url);
-   setLastFileKg(itemRef.name);
-  
-   })
-  
-    //   f=1;
-    // }
-}
+    //var f=0;
+    var len=res.items.length;
+    console.log("len "+len)
+    res.items.map((itemRef,index) => {
+   if(index===len-1)
+   {
+       console.log("last file"+itemRef.name);
+       getDownloadURL(itemRef).then((url)=>{
+        setLastFileUrlKg(url);
+        setLastFileKg(itemRef.name);
+        });
+   }
+   }
     );
 }   //if res>0
 else{
@@ -175,7 +166,7 @@ else{
      
 
         var fileInput = 
-        document.getElementById('file1');
+        document.getElementById('file-inp');
         var filePath = fileInput.value;
 
          // Allowing file type
@@ -237,23 +228,18 @@ listAll(listRef)
    if(res)
    {
     var f=0;
-    res.items.forEach((itemRef) => {
-        // if (f===0) {
-            
-   
-getDownloadURL(itemRef).then((url)=>{
-   setLastFileUrlTn(url);
-   setLastFileTn(itemRef.name);
-   })
-
-   
-
-console.log("last file set "+itemRef.name);
-
-
-    //   f=1;
-    // }
-}
+    var len=res.items.length;
+    console.log("len "+len)
+    res.items.map((itemRef,index) => {
+   if(index===len-1)
+   {
+       console.log("last file"+itemRef.name);
+       getDownloadURL(itemRef).then((url)=>{
+        setLastFileUrlTn(url);
+        setLastFileTn(itemRef.name);
+        });
+   }
+   }
     );
 }   //if res>0
 else{

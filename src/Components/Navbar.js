@@ -32,9 +32,9 @@ async function handleLogout() {
          <div className="navParent">
      <div className="navigation">
          
-         <NavLink exact to="/" className="link" style={{textAlign:"left"}}>
+         <span  className="link" style={{textAlign:"left"}}>
          <img src={logo} className="logo"/>    
-         </NavLink>           
+         </span>           
             
  
          <ul className="nav-pills">

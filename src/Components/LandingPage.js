@@ -31,8 +31,7 @@ function LandingPage() {
         const [lastFileUrlTn,setLastFileUrlTn]=useState("");
         const [userDetails,setUserDetails]=useState('');
 
-        const files_name=[];
-        const files_url=[];
+       
     useEffect(() => {
         const getdatafromFirebase=[];
         const sub=db.collection("Org")

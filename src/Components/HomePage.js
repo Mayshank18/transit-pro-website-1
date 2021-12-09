@@ -26,8 +26,8 @@ export default function HomePage() {
         console.log(res);
       }).catch(err=>console.log("Error: "+err));
 
-     //emailjs.send("service_tnyby6u","template_gl3mqfy",e.target,'user_GLD89axVW2xbsmYDgI3JY');
-     window.location.reload();
+     var frm=document.getElementsByName("mail-form")[0];
+     frm.reset();
       alert("Query submitted successfully");
 
   }
@@ -52,18 +52,18 @@ export default function HomePage() {
       <div className="HeroRight">
 
         <h1>Contact Us</h1>
-        <form onSubmit={sendEmail}>
+        <form onSubmit={sendEmail} name="mail-form">
         <label >
       Name
     </label>
-    <input type="text" ref={nameRef} placeholder="Joe Mason"/>
+    <input type="text" id="name" ref={nameRef} placeholder="Joe Mason"/>
     <label >
       Email
     </label>
-    <input type="text" ref={emailRef} placeholder="joe@transitpro.com"/>
+    <input type="text" id="mail" ref={emailRef} placeholder="joe@transitpro.com"/>
 
     <label >Query</label>
-   <textarea name="Message" name="query" ref={queryRef}/>
+   <textarea name="Message" id="msg" name="query" ref={queryRef}/>
 
       <button type="submit ">Submit</button>
         </form>

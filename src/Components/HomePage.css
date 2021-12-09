@@ -16,6 +16,7 @@
     text-align: center;
     
 }
+
 .banner{
    width: 80%;
    padding: 1rem auto;
@@ -23,11 +24,15 @@
 }
 .Heroleft h1{
     padding: 1 rem auto;
-    font-family: Roboto;
-font-style: italic;
-font-weight: 700;
+    font-family: 'Work Sans', sans-serif;
+    
+font-weight: 900;
 
-font-size: 150%;
+
+font-size: 3rem;
+    color: #0880A6;
+    margin-bottom: 10px;
+    line-height: 45px;
 
 color: #0880A6;
 }

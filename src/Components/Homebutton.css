@@ -7,3 +7,9 @@
     padding: 0.5rem 0.7rem;
     font-weight:400;
 }
+.button-parent button:hover{
+background-color: #0880A6;
+color: white;
+transition: all 0.2s ease-in-out;
+
+}

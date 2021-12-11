@@ -1,10 +1,10 @@
 import React from "react";
-import "./footer.css";
+import "./HomePage.css";
 //import whatsapp from "../Photos/whatsapp-logo.png"
 export default function Footer() {
   return (
-    <div className="foot">
-    <p className="foot-p"> Transitpro 2021 Copyright.</p>
-  </div>
+        <div className="footerContainer">
+            <p>Call Us:<a href="tel:+919334399539">+919334399539</a><a href="tel:+919334899539">+919334899539</a></p>
+        </div>
   );
 }

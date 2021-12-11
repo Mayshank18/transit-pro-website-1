@@ -1,7 +1,7 @@
 .topnav {
   
   width: 100%;
-  height: 12vh;
+  height: 10vh;
   padding: 1rem;
 
   background: #284f6f;
@@ -9,8 +9,7 @@
 }
 .logo {
  
-  width: 300px;
-  height: 62.46px;
+  width: 180px;
   left: 30px;
   top: 8px;
 }

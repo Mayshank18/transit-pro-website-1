@@ -386,7 +386,7 @@ async function handleSubmit(e){
             {
                 posts.length>0?
                 (posts.map((post)=> 
-                
+             <div>
             <select
           className="rev-select"
           onChange={otherSpecify}
@@ -397,15 +397,22 @@ async function handleSubmit(e){
               <option value="E-Commerce">E-Commerce</option>
               <option value="Manufacturing">Manufacturing</option>
               <option value="Others">Others</option>
-               </select>)):""
-}
-               
-              <input type="text" 
+               </select>
+                  <input type="text" 
                   placeholder="Please Specify"
                   ref={sect}
-                  style={{display:others}}
-             />
-             
+                  defaultValue={post.Sector}
+                  style={{display:others}}/>
+                  </div>
+               ) ):""
+               
+              
+
+              }
+           
+          
+        
+           
            
         </div>
         <div>

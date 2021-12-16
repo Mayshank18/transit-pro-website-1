@@ -1,9 +1,16 @@
 
   #row{
     display: grid;
-    grid-template-columns: 20% 60% 20%;
-    width: 100%;
+    grid-template-columns: 30% 40% 30%;
+    width: 90%;
+  margin: 1rem auto;
+    padding-top: 5rem;
+    height: 100vh;
+    padding-bottom: 20rem;
+  
+
 }
+
 .column{
     
   
@@ -14,17 +21,34 @@
   background-color: white;
   margin: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
+
   border-radius: 1rem;
 
 }
 .miniProfile h2{
   margin: 1rem;
-  font-size: 100%;
+
   margin-top: 1rem;
   padding-top: 2rem;
 }
-
+.prof-link{
+  color: #284f6f;
+  text-decoration: underline;
+  font-weight: 500;
+}
+#prof-data{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 90%;
+  margin: 1rem auto;
+ 
+}
+#prof-data h6{
+ font-weight: 500;
+}
+#prof-data p{
+  color: #284f6f;
+}
 .member{
   margin-top: 3rem;
   background-color: #F2C106;
@@ -44,9 +68,11 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .reqtruck{
-  height: 20px;
-  display: inline;
-  text-align: left;
+  height: 25px;
+  
+ 
+  margin: 0.5rem auto;
+  
 }
 .reqinp{
   border-radius: 0.5rem;
@@ -55,6 +81,14 @@
   background-color: #F4F1E6;
   margin-left: 2rem;
 }
+#req-div{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  width: 90%;
+  margin: 0.2rem auto;
+
+}
+
 .liverfq{
  background-color: #F2C106;
  border-radius: 1rem;
@@ -87,7 +121,7 @@
   background-color: white;
   border-radius: 1rem;
   text-align: center;
-  width: 90%;
+  width: 70%;
   margin: 1rem auto;
   padding:1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -98,27 +132,48 @@
   background-color: #F2C106;
   border-radius: 0.7rem;
   border:none ;
-width: 80%;
+width: 60%;
   
   padding: 0.5rem 0.7rem;
   font-weight:400;
 text-align: center;
 
 }
+.bt-util:hover span{
+  display: none;
+}
+.bt-util:hover::before{
+  content: "Coming Soon!";
+}
+.bt-util:hover{
+  background-color: #0880A6;
+color: white;
+transition: all 0.2s ease-in-out;
+}
+.bt-data{
+  display: block;
+  margin: 1rem auto;
+  background-color: #F2C106;
+  border-radius: 0.7rem;
+  border:none ;
+width: 60%;
+  
+  padding: 0.5rem 0.7rem;
+  font-weight:400;
+text-align: center;
+}
+
 .data{
   background-color: white;
   border-radius: 1rem;
   text-align: center;
-  width: 90%;
+  width: 70%;
   margin: 1rem auto;
   padding:1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.load-img{
-  display: block;
-  margin: 30vh auto;
-  width: 50%;
-}
+
+
 .sub-btn{
   background-color: #F2C106;
 
@@ -172,7 +227,21 @@ text-align: center;
 .ico-dwnld{
   margin: 0.5rem;
 }
-#file-inp{
+#file-inp-kg{
+  width: 100%;
+ margin: auto;
+ background-color: rgb(241, 241, 241);
+ margin-left: 2.5%;
+ 
+}
+#file-inp-tonne{
+  width: 100%;
+ margin: auto;
+ background-color: rgb(241, 241, 241);
+ margin-left: 2.5%;
+ }
+
+#file-inp-lanes{
   width: 100%;
  margin: auto;
  background-color: rgb(241, 241, 241);

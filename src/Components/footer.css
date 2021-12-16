@@ -7,19 +7,22 @@
 .foot{
     height: 7vh;
     background-color: #284F6F;
-  position: relative;
+  position: fixed;
     width: 100%;
-  
+  bottom: 0;
+  height: 8vh;
    
 
 }
 .foot-p{
-    position: absolute;
+    /* position: absolute; */
 
     background-color: #284F6F;
+    padding-top: 1rem;
     text-align: center;
-    color: #F2C106;
+    color:white;
     font-weight: 400;
-    right: 1rem;
-    top: 5px;
+    /* right: 40%;
+    top: 5px; */
+
 }

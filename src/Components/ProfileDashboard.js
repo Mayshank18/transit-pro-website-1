@@ -11,6 +11,7 @@ import loadgif from "../images/load.gif"
 import {GrAdd,GrEdit} from "react-icons/gr"
 import {BsFillPersonFill} from "react-icons/bs"
 import { Helmet } from 'react-helmet';
+import LoadingScreen from './LoadingScreen';
 function ProfileDashboard() {
   
     const [error, setError] = useState("");
@@ -41,12 +42,7 @@ function ProfileDashboard() {
         {
             return(
             
-                <div style={{backgroundColor:"#E5E5E5", alignItems:"center"}}>
-                <Navbar/>
-                 
-                    <img src={loadgif} alt="loading" className="load-img"/>
-                    <Footer/>
-                    </div>
+               <LoadingScreen/>
                 )
         }
         async function handleLogout() {

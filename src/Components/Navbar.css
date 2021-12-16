@@ -14,6 +14,10 @@
     .navParent{
         color: var(--secondary-color);
 background-color: var(--primary-color);
+position: fixed;
+width: 100%;
+top: 0;
+height:10vh;
 /* text-align: center; */
     }
 .navigation 
@@ -23,11 +27,12 @@ background-color: var(--primary-color);
 margin-left: auto;
 margin-right: auto;
 width:90%;
-padding-top: 1rem;
-padding-bottom: 0.5rem;
+padding: 0.5rem 0;
+height: 10vh;
 
 
 }
+
 
 .navigation h2{
   display: inline;
@@ -80,6 +85,8 @@ text-decoration: underline;
     text-decoration: none;
     cursor: pointer;
 }
+
+
  .nav-pills{
     text-align: right;
     display: inline;
@@ -97,7 +104,18 @@ text-decoration: underline;
     border:none ;
   
     margin: 1rem auto;
-    padding: 0.5rem 0.7rem;
+    padding: 0.3rem 0.5rem;
     font-weight:400;
   text-align: center;
+}
+.bt-logout:hover{
+    background-color: #0880A6;
+color: white;
+transition: all 0.2s ease-in-out;
+}
+
+.link img{
+    width: 15%;
+    margin: 4px auto;
+
 }

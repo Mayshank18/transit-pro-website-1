@@ -33,7 +33,9 @@ async function handleLogout() {
      <div className="navigation">
          
          <span  className="link" style={{textAlign:"left"}}>
-         <img src={logo} className="logo"/>    
+         <img src={logo} className="logo" onClick={()=>{
+            history.push("/landing");
+         }}/>    
          </span>           
             
  

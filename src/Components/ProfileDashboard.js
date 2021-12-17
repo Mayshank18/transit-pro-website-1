@@ -74,24 +74,36 @@ function ProfileDashboard() {
         <title>Transit Pro | Profile Dashboard</title>
       </Helmet>
     <Navbar/>
+    <div className="profile-container">
     <div className="profile">
-        <div className="avatar">
+      
+        {/* columns */}
+        <div id="row-profile" style={{ height:"100vh"}}>
+         <div className="column  ">
+         <div className="avatar">
            
 
-            {
-                posts.length>0?
-                (posts.map((post)=><h3 key={post.key} >
-                    
-                       {post.Company}
-                    
-                    </h3>) ):
-                <h3>Company Name</h3>
-            }
+           {
+               posts.length>0?
+               (posts.map((post)=><h3 key={post.key} >
+                   
+                      {post.Company}
+                   
+                   </h3>) ):
+               <h3>Company Name</h3>
+           }
 
-        </div>
-        {/* columns */}
-        <div id="row" style={{ height:"100vh"}}>
-         <div className="column  ">
+       </div>
+        {
+                posts.length>0?
+                (posts.map((post)=><h6 key={post.key} className="state">
+                    
+                       {post.INState}
+                    
+                    </h6>) ):
+               <h6 className="state">FTL/PTL</h6>
+            }
+         <h6>Services</h6>
          {
                 posts.length>0?
                 (posts.map((post)=><h6 key={post.key} className="ftl-ptl" >
@@ -105,8 +117,8 @@ function ProfileDashboard() {
              </div>
 
              <div className="column  contact-person">
-                 {/* <h6>Person of Contact</h6> */}
-                 <BsFillPersonFill style={{fontSize:"50px"}}/>
+                 <h6>Person of Contact</h6>
+                 <BsFillPersonFill className="person-avatar"/>
                  {
                 posts.length>0?
                 (posts.map((post)=><h6 key={post.key} >
@@ -119,6 +131,7 @@ function ProfileDashboard() {
              </div>
 
              <div className="column  past-work">
+                 <h6>Experienced Sectors</h6>
                 <ul>
                 {
                 posts.length>0?
@@ -129,7 +142,14 @@ function ProfileDashboard() {
                     </li>) ):
                 <li>Sector</li>
             }
-                  {
+                 
+                
+            
+                 </ul>
+             </div>
+             <div className="column">
+                 <h6>Companies Associated</h6>
+                 {
                 posts.length>0?
                 (posts.map((post)=><li key={post.key} >
                     
@@ -138,21 +158,19 @@ function ProfileDashboard() {
                     </li>) ):
                <li>{GrAdd}Company </li>
             }
-                
-            
-                 </ul>
              </div>
 
              </div>
                 </div>
+               
 
                  {/* profile card over */}
              {/* details card below */}
             <div className="tab-parent">
-             <div id="detail-Tab">
+             <div className="detail-Tab">
                  <h2 >My Details</h2>
-                    <div className="icon-edit" onClick={handleEdit}><GrEdit /></div>
-                    <div  className="icon-add" onClick={handleList}><GrAdd /></div>
+                    <div className="icon-edit" ><GrEdit style={{cursor:"pointer"}} onClick={handleEdit}/></div>
+                    <div  className="icon-add" ><GrAdd style={{cursor:"pointer"}} onClick={handleList}/></div>
                     </div>
                  <div className="detailsListParent" style={{display:disp}}>
                  {
@@ -178,13 +196,14 @@ function ProfileDashboard() {
             }
                  </div>
 
-                 <div id="detailTab">
+                 <div className="detailTab ">
                  <h2 >My Analytics</h2>
                     <div className="icon" ><GrAdd /></div>
                     </div>
-                    <div id="detailTab">
+                    <div className="detailTab">
                  <h2 >My Activity</h2>
                     <div className="icon" ><GrAdd /></div>
+                    </div>
                     </div>
                     </div>
                 <Footer/>

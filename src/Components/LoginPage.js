@@ -85,7 +85,7 @@ export default function LoginPage() {
         <title>Transit Pro | Login </title>
       </Helmet>
     <Header/>
-  
+  <div className="container">
     <div className="form-parent">
       
       <h2>Welcome back!</h2>
@@ -133,7 +133,7 @@ export default function LoginPage() {
         <Link to="/signup"className="reset">Signup?</Link>
       </div>
     </div>
-   
+    </div>
    <Footer/>
  
     </div>

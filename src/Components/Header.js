@@ -7,8 +7,8 @@ export default function Header() {
     const history=useHistory();
     return (
     
-        <div className="navParent">
-        <div className="navigation">
+        <div className="headParent">
+        <div className="head">
             
         
             <img src={logo} className="logo" onClick={()=>{

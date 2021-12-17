@@ -1,4 +1,8 @@
-
+.sign-container{
+    padding-top: 10vh;
+ padding-bottom: 3rem;
+    background-color: #e5e5e5;
+}
 
 .sign-parent{
     width: 60%;

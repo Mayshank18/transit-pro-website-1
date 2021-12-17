@@ -1,13 +1,20 @@
 
-
+.container{
+    padding-top: 14vh;
+    height: 98vh;
+    background-color: #e5e5e5;
+}
 .form-parent{
+   
     width: 50%;
     align-content: center;
-    margin: 3rem auto;
+    margin: 0rem auto;
     background-color: white;
     padding: 2rem;
     border-radius: 0.5rem;
     margin-bottom: 3.2rem;
+  
+   
 }
 
 .form-parent h2{

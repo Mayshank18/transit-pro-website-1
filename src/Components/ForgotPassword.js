@@ -37,6 +37,7 @@ export default function ForgotPassword() {
   return (
     <div style={{backgroundColor:"#E5E5E5",height:"100vh"}}>
     <Header/>
+    <div className="forgot-container">
     <div className="sign-parent">
       <h2>Reset your password.</h2>
       {error && <Alert variant="danger">{error}</Alert>}
@@ -64,7 +65,8 @@ export default function ForgotPassword() {
         </button>
       </form>
     </div>
-   
+    </div>
+    <Footer/>
     </div>
   );
 }

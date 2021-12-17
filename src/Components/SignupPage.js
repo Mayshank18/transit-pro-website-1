@@ -147,6 +147,8 @@ export default function SignupPage() {
         <title>Transit Pro | Create a new Account</title>
       </Helmet>
     <Header/>
+
+    <div className="sign-container">
     <div className="sign-parent">
      
       <h2>Create a fresh account with us!</h2>
@@ -232,6 +234,7 @@ export default function SignupPage() {
        
         <Link to="/login"className="reset">Already a customer? Login.</Link>
       </div>
+    </div>
     </div>
     <Footer/>
     </div>

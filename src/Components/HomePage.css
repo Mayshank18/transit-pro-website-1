@@ -1,19 +1,21 @@
 
-.divide{
-    height: 81.5vh;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    width: 100%;
+
+   .divide{
+    /* height: 100vh; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
     padding-top: 4rem;
+
 }
 .Heroleft{
     margin-top: 3rem;
     margin-bottom: 3rem;
-   
-   
     align-items: center;
     padding: 2rem 1rem ;
     text-align: center;
+    width: 50%;
     
 }
 
@@ -25,16 +27,12 @@
 .Heroleft h1{
     padding: 1 rem auto;
     font-family: 'Work Sans', sans-serif;
-    
-font-weight: 900;
-
-
-font-size: 3rem;
+    font-weight: 900;
+    font-size: 3rem;
     color: #0880A6;
     margin-bottom: 10px;
     line-height: 45px;
-
-color: #0880A6;
+    color: #0880A6;
 }
 .Heroleft p{
     color: rgba(128, 93, 93, 0.65);
@@ -46,21 +44,21 @@ color: #0880A6;
 .truck-gr{
     height: 30%;
     width: 30%;
+    margin-top: 6vh;
    }
 
   
    .HeroRight{
     
-    width: 70%;
-  
+    width: 40% ;
     align-items: center;
     padding: 2rem 0.5rem ;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: rgba(196, 196, 196, 0.38);
     border-radius: 0.5rem;
     margin: 3rem auto;
-   padding-bottom: 2rem;
-   margin-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
    }
    .HeroRight *{
        display: block;
@@ -71,35 +69,84 @@ color: #0880A6;
        text-align: center;
    }
    .HeroRight form{
-       width: 80%;
+       width:80%;
        margin: 1rem auto;
        
    }
-   .HeroRight label{
-       margin-top: 1rem;
-       margin-bottom: 1rem;
-   }
    .HeroRight input {
        border: none;
-       width: 70%;
+       width: 100%;
        border-radius: 0.5rem;
        padding: 0.5rem;
+       margin-bottom: 1rem;
    }
    .HeroRight textarea{
     border: none;
-    width: 70%;
+    width: 100%;
     border-radius: 0.5rem;
     padding: 0.5rem;
    }
 
    .HeroRight button{
     background-color: #F2C106;
-    border-radius: 0.7rem;
+    border-radius: 0.8rem;
     border:none ;
     margin: 1rem 2rem;
     padding: 0.5rem 0.7rem;
     font-weight:400;
     margin: 1rem auto;
+    width: 8vw;
    }
+.HeroRight button:hover{
+    background-color: #0880A6;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
 
-  
+@media screen and (max-width: 860px)
+{
+    .divide {
+        text-align: center;
+        flex-direction: row;
+        padding-bottom: 8rem;
+    }
+    .Heroleft,.HeroRight {
+        flex-basis: 100%;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 5px;
+    }
+    .Heroleft{
+        margin-top: 12vh;
+    }
+    .Heroleft p{
+        text-align: center;
+        width: auto;
+    }
+    .truck-gr{
+        height: 60%;
+        width: 50%;
+        margin-top: 30px;
+    }
+    .HeroRight button{
+        width:53vw;
+        margin-bottom: 8px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .Heroleft h1{
+        font-size: 2rem;
+        width:auto;
+    }
+    .HeroRight h1{
+        margin-top:-15px;
+        height: 4vh;
+    }
+    .HeroRight{
+        margin-top: 0px;
+        position: relative;
+        margin-bottom: 5px;
+        padding-bottom: auto;
+        height: 60vh;
+    }
+}

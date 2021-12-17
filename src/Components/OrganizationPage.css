@@ -1,4 +1,8 @@
-
+.org-container{
+    background-color: #e5e5e5;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
 
 .org-parent{
     width: 60%;
@@ -86,4 +90,4 @@
     margin-top: 0.5rem;
     width: 20%;
     text-align: left    ;
-}
+} 

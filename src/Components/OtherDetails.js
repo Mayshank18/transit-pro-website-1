@@ -85,6 +85,7 @@ const [others,setOthers]=useState("none");
         <title>Transit Pro|Setup your Account</title>
       </Helmet>
      <Header/>
+     <div className="other-container">
     <div className="org-parent">
      
       <h2>Other details</h2>
@@ -182,6 +183,7 @@ const [others,setOthers]=useState("none");
     </div>
     </div>
     <Footer/>
+    </div>
     </div>
   );
 }

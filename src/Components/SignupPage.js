@@ -149,7 +149,7 @@ export default function SignupPage() {
     <Header/>
 
     <div className="sign-container">
-    <div className="sign-parent">
+    <div className="sign-parent" >
      
       <h2>Create a fresh account with us!</h2>
 

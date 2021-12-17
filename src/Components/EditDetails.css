@@ -6,3 +6,29 @@
 .fieldGrid input{
     padding: 0.5rem;
 }
+.edit-container{
+    background-color: #e5e5e5;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+.edit-parent{
+    width: 60%;
+    align-content: center;
+    margin: 5rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.edit-parent h2{
+    text-align: center;
+    padding: 0.5rem;
+}
+
+@media screen and (max-width: 590px)
+{
+.edit-parent{
+    width: 80%;
+}
+
+}

@@ -171,7 +171,8 @@ async function handleSubmit(e){
         <title>Transit Pro | Edit Details</title>
       </Helmet>
      <Header/>
-    <div className="org-parent">
+     <div className="edit-container">
+    <div className="edit-parent">
      
       <h2>Edit details</h2>
       <form onSubmit={handleSubmit} noValidate className="org-form edit-form">
@@ -456,6 +457,7 @@ async function handleSubmit(e){
         </div>
       </form>
    
+    </div>
     </div>
     <Footer/>
     </div>

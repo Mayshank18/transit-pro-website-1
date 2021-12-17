@@ -3,10 +3,11 @@
     padding-top: 14vh;
     height: 98vh;
     background-color: #e5e5e5;
+    /* min-width: 540px; */
 }
 .form-parent{
    
-    width: 50%;
+    width: 60%; 
     align-content: center;
     margin: 0rem auto;
     background-color: white;
@@ -23,7 +24,7 @@
 }
 .log-form input{
     background-color: #E5E5E5;
-    width: 80%; 
+    width: 100%; 
     margin: 0.5rem 0.5rem;
     margin-bottom: 0.5rem;
     display: block;
@@ -35,7 +36,7 @@
 .log-form{
     width: 70%;
     margin: 1rem auto;
-   padding: 1rem;
+
     
 }
 
@@ -67,3 +68,10 @@
       margin: 1rem 0.5rem;
   }
 
+  @media screen and (max-width: 860px)
+  {
+.form-parent{
+    width: 90%;
+}
+
+  }

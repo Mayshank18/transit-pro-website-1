@@ -130,9 +130,9 @@ function ProfileDashboard() {
             }
              </div>
 
-             <div className="column  past-work">
+             <div className="column">
                  <h6>Experienced Sectors</h6>
-                <ul>
+               
                 {
                 posts.length>0?
                 (posts.map((post)=><li key={post.key} >
@@ -145,7 +145,7 @@ function ProfileDashboard() {
                  
                 
             
-                 </ul>
+                 
              </div>
              <div className="column">
                  <h6>Companies Associated</h6>

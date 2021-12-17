@@ -47,34 +47,24 @@ export default function HomePage() {
         
         <img src={truck} alt="Truck" className="truck-gr"/>
       </div>
-      {/* Left element */}
-      <div className="rightParent">
+   
       <div className="HeroRight">
-
-        <h1>Contact Us</h1>
-        <form onSubmit={sendEmail} name="mail-form">
-        <label >
-      Name
-    </label>
-    <input type="text" id="name" ref={nameRef} placeholder="Joe Mason"/>
-    <label >
-      Email
-    </label>
-    <input type="text" id="mail" ref={emailRef} placeholder="joe@transitpro.com"/>
-
-    <label >Query</label>
-   <textarea name="Message" id="msg" name="query" ref={queryRef}/>
-
-      <button type="submit ">Submit</button>
-        </form>
-
+         <h1>Contact Us</h1>
+           <form onSubmit={sendEmail} name="mail-form">
+             <input type="text" id="name" ref={nameRef} placeholder="Your Name"/>
+             <input type="text" id="mail" ref={emailRef} placeholder="Your Email"/>
+             <input type="number" id="number" placeholder="Your Mobile Number" />
+             <textarea name="Message" id="msg" name="query" ref={queryRef} placeholder="Your Queries"/>
+             <button type="submit ">Submit</button>
+           </form>
+         </div>
       </div>
-      </div>
-      </div>
+     
       
       <Footer/>
      
       
     </>
+
   );
 }

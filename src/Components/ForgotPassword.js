@@ -37,12 +37,12 @@ export default function ForgotPassword() {
   return (
     <div style={{backgroundColor:"#E5E5E5",height:"100vh"}}>
     <Header/>
-    <div className="forgot-container">
-    <div className="sign-parent">
+    <div className="fgt-container">
+    <div className="fgt-parent">
       <h2>Reset your password.</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       {message && <Alert variant="success">{message}</Alert>}
-      <form onSubmit={handleSubmit}className="sign-form">
+      <form onSubmit={handleSubmit}className="fgt-form">
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email
@@ -50,7 +50,7 @@ export default function ForgotPassword() {
           <input
             type="email"
             placeholder="enter your email id"
-            className="form-control"
+            className="fgt-inp"
             id="email"
             ref={emailRef}
             required

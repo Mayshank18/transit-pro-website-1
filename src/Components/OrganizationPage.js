@@ -178,6 +178,7 @@ export default function OrganizationPage() {
         <title>Transit Pro | Setup your Account</title>
       </Helmet>
      <Header/>
+     <div className="org-container">
     <div className="org-parent">
      
       <h2>Organization details</h2>
@@ -289,6 +290,7 @@ export default function OrganizationPage() {
    
     </div>
     <Footer/>
+    </div>
     </div>
   );
 }

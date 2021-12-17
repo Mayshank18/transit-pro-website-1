@@ -17,3 +17,15 @@
     padding: 0.5rem;
     margin: 0.5rem;
 }
+.other-container{
+    background-color: #e5e5e5;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
+@media screen and (max-width: 590px)
+{
+    .org-parent{
+        width: 80%;
+    }
+
+}

@@ -378,7 +378,7 @@ console.log("Error occured"+error);
      <Navbar/>
 
      <div id="row" >
-         <div className="column  col-left">
+         <div className="column-landing  col-left">
          <div className="miniProfile">
 
          {
@@ -415,7 +415,7 @@ console.log("Error occured"+error);
          
          </div>
          {/* middle Column */}
-         <div className="column col-mid">
+         <div className="column-landing col-mid">
             <div className="reqBox " id="req-div">
                 <img src={truck} alt="icon" className="reqtruck"/>
                 <input type="text" className="reqinp" placeholder="Post Requirements"/>
@@ -435,7 +435,7 @@ console.log("Error occured"+error);
          </div>
 
          {/* Right col */}
-         <div className="column col-right ">
+         <div className="column-landing col-right ">
              {/* Util */}
              <div className="util">
                  <h3>My Utilities</h3>

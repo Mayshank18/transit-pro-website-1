@@ -7,8 +7,9 @@ import "./OrganizationPage.css"
 import "./OtherDetails.css"
 import Header from "./Header";
 import Footer from "./Footer";
-import { Checkbox } from "react-bootstrap";
+
 import { Helmet } from "react-helmet";
+
 
 
 export default function OtherDetails() {
@@ -19,7 +20,6 @@ export default function OtherDetails() {
     const serv=useRef("");
 const [others,setOthers]=useState("none");
   const [error, setError] = useState("");
-
 
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -71,18 +71,19 @@ const [others,setOthers]=useState("none");
   function otherSpecify(e){
       console.log("sector value:"+e.target.value);
       if(e.target.value==="Others")
-      setOthers("block");
-
+     { setOthers("block");
+     console.log("other selected");
+  }
       else
       setOthers("none")
   }
-  
+ 
 
 
   return (
     <div style={{backgroundColor:"#E5E5E5"}}>
       <Helmet>
-        <title>Transit Pro|Setup your Account</title>
+        <title>Transit Pro | Setup your Account</title>
       </Helmet>
      <Header/>
      <div className="other-container">
@@ -141,6 +142,9 @@ const [others,setOthers]=useState("none");
               <option value="Manufacturing">Manufacturing</option>
               <option value="Others">Others</option>
                </select>
+          
+               
+           
                
               <input type="text" 
                   placeholder="Please Specify"

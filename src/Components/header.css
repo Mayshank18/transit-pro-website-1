@@ -5,8 +5,18 @@ position: fixed;
 width: 100%;
 top: 0;
 height:60px;
+display: flex;
 }
 
+.home{
+  margin-right: 5vw;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+.home-p{
+  margin: auto;
+  font-weight: bolder;
+}
 
 .head{
   color: var(--secondary-color);
@@ -20,6 +30,8 @@ height: 40px;
 }
 .logo{
   width: 180px;
+  margin-left:1vw;
+  margin-top: auto;
+  margin-bottom: auto;
 
-    margin: 4px auto;
 }

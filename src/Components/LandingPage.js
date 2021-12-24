@@ -371,26 +371,20 @@ console.log("Error occured"+error);
     return (
 
  
-        <div style={{backgroundColor:"#E5E5E5"}}>
+        <div className='entirePage'>
             <Helmet>
-        <title>Transit Pro | Home</title>
-      </Helmet>
-     <Navbar/>
-
-     <div id="row" >
-         <div className="column-landing  col-left">
-         <div className="miniProfile">
-
-         {
+            <title>Transit Pro | Home</title>
+            </Helmet>
+            <Navbar/>
+            <div id="row" >
+            <div className="column-landing  col-left">
+            <div className="miniProfile">
+            {
                 posts.length>0?
                 (posts.map((post)=><div key={post.key}>
-                    
-                    <h2>{post.Company}</h2>
-                    
-                    
-                    
-                    </div>) ):
-              <h2>Company pvt. Ltd.</h2>
+                <h2>{post.Company}</h2>
+                </div>) ):
+                <h2>Company pvt. Ltd.</h2>
             }
 
              

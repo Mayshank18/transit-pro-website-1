@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
-import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./LoginPage.css"
@@ -18,6 +17,9 @@ export default function LoginPage() {
   
   const history = useHistory();
 
+  function handleAlert(){
+    document.getElementById('alert-container').style.display='none'; 
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -29,10 +31,7 @@ export default function LoginPage() {
     
       await login(emailRef.current.value, passwordRef.current.value).then(()=>{
         if (cancel) return;
- ;
       })
-
-       
         //validating account setup state
       
        var docref=db.collection("Org").doc(emailRef.current.value);
@@ -85,54 +84,38 @@ export default function LoginPage() {
         <title>Transit Pro | Login </title>
       </Helmet>
     <Header/>
-  <div className="container">
-    <div className="form-parent">
+  <div className="centerlog">
       
-      <h2>Welcome back!</h2>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit} className="log-form">
-        {error && <Alert variant="danger">{error}</Alert>}
+        {error && <div className="alert-container" id="alert-container">
         
-          <label htmlFor="email" >
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="someone@organization.com"
-            
-            id="email"
-            ref={emailRef}
-            required
-          />
-      
+            <div className="alert">
+                <span className="closebtn" onClick={handleAlert}>×</span>
+                Username Or Password is Incorrect
+            </div>
         
-          <label htmlFor="password" >
-            Password
-          </label>
-          <input
-            type="password"
-            placeholder="password"
-            
-            id="password"
-            ref={passwordRef}
-            required
-          />
-       <div className="center">
-      <button
+        </div>}
+        
+        <div className="text_field1">
+          <input type="text" id="email" required ref={emailRef}/>
+          <label for="email">Email</label>
+        </div>
+        <div className="text_field2">
+          <input type="password" id="password" required ref={passwordRef}/>
+          <label for="password">Password</label>
+        </div>
+      <Link to="/forgot-password" className="pass">Forgot Password?</Link>
+       <div className="subBut">
+      <input
           type="submit"
-        className="sub-button" >
-          Submit
-        </button>
-      </div>
-     
-      </form>
-      
-
-      <div className="reset-parent">
-        <Link to="/forgot-password" className="reset">Forgot Password</Link>
-      
-        <Link to="/signup"className="reset">Signup?</Link>
-      </div>
-    </div>
+          value="Login" />
+        </div>
+        <div className="signup_link">
+          Not a member?
+          <Link to="/signup"className="reset">Signup</Link>
+        </div>
+      </form>  
     </div>
    <Footer/>
  

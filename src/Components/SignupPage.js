@@ -147,22 +147,15 @@ export default function SignupPage() {
         <title>Transit Pro | Create a new Account</title>
       </Helmet>
     <Header/>
-
-    <div className="sign-container">
-    <div className="sign-parent" >
+    <div className="centersig" >
      
-      <h2>Create a fresh account with us!</h2>
+      <h1>SignUp</h1>
 
       <form onSubmit={handleSubmit} className="sign-form">
         {error && <Alert variant="danger">{error}</Alert>}
-        <div >
-          <label htmlFor="contact" >
-            Contact Number
-          </label>
+        <div className="text_field1" >
           <input
             type="number"
-            placeholder="phone number"
-            
             id="contact"
             value={contact}
             onChange={(e) => {
@@ -172,30 +165,26 @@ export default function SignupPage() {
             //ref={contactRef}
             required
           />
+          <label htmlFor="contact" >
+            Contact Number
+          </label> 
         </div>
-        <div >
-          <label htmlFor="email" >
-            Email
-          </label>
+        <div className="text_field2" >
           <input
             type="email"
-            placeholder="someone@organization.com"
-            
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             //ref={emailRef}
             required
           />
-        </div>
-        <div >
-          <label htmlFor="newpassword" >
-            Setup Password
+          <label htmlFor="email">
+            Email
           </label>
+        </div>
+        <div className="text_field3">
           <input
             type="password"
-            placeholder="password"
-            
             id="newpassword"
             //ref={newpasswordRef}
             value={newpassword}
@@ -204,37 +193,37 @@ export default function SignupPage() {
             }}
             required
           />
-        </div>
-        <div >
-          <label htmlFor="confirmpassword" >
-            Confirm Password
+          <label htmlFor="newpassword" >
+            Setup Password
           </label>
+        </div>
+        <div className="text_field4">
           <input
             type="password"
-            placeholder="password"
-            
             id="confirmpassword"
             //ref={confirmpasswordRef}
             value={confirmpassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          <label htmlFor="confirmpassword" >
+            Confirm Password
+          </label>
         </div>
-        <div className="center">
-        <button
-          type="submit"
-          className="sub-button"
-          disabled={loading}
-        >
-          Signup
-        </button>
-        </div>
-      </form>
-      <div className="reset-parent">
-       
-        <Link to="/login"className="reset">Already a customer? Login.</Link>
+      <div className="subBut">
+      <button
+        type="submit"
+        className="sub-button"
+        disabled={loading}
+      >
+        Signup
+      </button>
       </div>
-    </div>
+      <div className="login-link"> 
+        Already a customer?
+        <Link to="/login"className="reset">Login</Link>
+      </div>
+      </form>
     </div>
     <Footer/>
     </div>

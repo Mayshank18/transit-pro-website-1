@@ -15,14 +15,14 @@
 
 }
 .foot-p{
-    /* position: absolute; */
-
-    background-color: #284F6F;
-    padding-top: 4px;
-    text-align: center;
-    color:white;
-    font-weight: 400;
-    /* right: 40%;
-    top: 5px; */
-
+  background-color: #314584;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  margin-bottom: 0% !important;
 }
+

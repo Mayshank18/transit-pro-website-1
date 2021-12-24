@@ -7,7 +7,7 @@ import "./OrganizationPage.css"
 import "./OtherDetails.css"
 import Header from "./Header";
 import Footer from "./Footer";
-
+import Select from 'react-select';
 import { Helmet } from "react-helmet";
 
 
@@ -77,7 +77,29 @@ const [others,setOthers]=useState("none");
       else
       setOthers("none")
   }
- 
+    const sectorType=[
+      {
+        value:'1',
+        label:'FMCG'
+      },
+      {
+        value:'2',
+        label:'E-Commerce'
+      },
+      {
+        value:'3',
+        label:'Manufacturing'
+      },
+      {
+        value:'4',
+        label:'Others'
+      }
+    ];
+
+    var [DisplayValue, getValue]=useState();
+    var Ddhandle=(e)=>{
+      getValue(Array.isArray(e)?e.map(x=>x.label):[]);
+    }
 
 
   return (
@@ -132,19 +154,12 @@ const [others,setOthers]=useState("none");
         </div>
         <div>
             <label >Primary Sector</label>
-            <select
+            <Select
           className="rev-select"
-          onChange={otherSpecify}
-          ref={sect}>
-                <option value="">Choose..</option>
-              <option value="FMCG">FMCG</option>
-              <option value="E-Commerce">E-Commerce</option>
-              <option value="Manufacturing">Manufacturing</option>
-              <option value="Others">Others</option>
-               </select>
-          
-               
-           
+          onChange={Ddhandle,otherSpecify}
+          ref={sect} options={sectorType}>
+              
+               </Select>
                
               <input type="text" 
                   placeholder="Please Specify"

@@ -1,7 +1,7 @@
 import React from "react";
 import emailjs from "emailjs-com"
 import Homebutton from "./Homebutton";
-import Header from "./Header";
+import Header from "./HomeHeader";
 import Footer from "./Footer"
 import "../App.css"
 import "./HomePage.css"
@@ -37,10 +37,11 @@ export default function HomePage() {
       <Helmet>
         <title>Transit Pro</title>
       </Helmet>
-      <Header/>  
+      <Header/> 
+      <div className="biggerPicture"> 
       <div className="divide">
       <div className='Heroleft'>
-        <h1 className="hero-H">Businesses grow with</h1>
+        <h1 className="hero-H">Businesses Grow With</h1>
     <img src={Hero} alt="Transit Pro" className="banner" />
     <p>This is a platform where your Logistic Companies find their Future Businesses. </p>
         <Homebutton/>
@@ -49,17 +50,25 @@ export default function HomePage() {
       </div>
    
       <div className="HeroRight">
-         <h1>Contact Us</h1>
+         <h2>Contact Us</h2>
            <form onSubmit={sendEmail} name="mail-form">
-             <input type="text" id="name" ref={nameRef} placeholder="Your Name"/>
-             <input type="text" id="mail" ref={emailRef} placeholder="Your Email"/>
-             <input type="number" id="number" placeholder="Your Mobile Number" />
-             <textarea name="Message" id="msg" name="query" ref={queryRef} placeholder="Your Queries"/>
-             <button type="submit ">Submit</button>
+             <div className="login">
+             <input type="text" className="input" id="name" ref={nameRef} placeholder="Your Name"/>
+             <input type="text" className="input" id="mail" ref={emailRef} placeholder="Your Email"/>
+            </div>
+            <div className="subject">
+             <input type="number" className="input" id="number" placeholder="Your Mobile Number" />
+            </div>
+            <div className="msg">
+             <textarea name="Message" className="area" id="msg" name="query" ref={queryRef} placeholder="Your Queries"/>
+            </div>
+            <div className="submit">
+             <button type="submit ">Send Message</button>
+            </div>
            </form>
          </div>
       </div>
-     
+      </div>
       
       <Footer/>
      
